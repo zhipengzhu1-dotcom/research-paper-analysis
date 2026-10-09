@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Read-only: is this checkout worth driving? Prints one line per check, PASS/FAIL summary, exit 1 on any FAIL.
+set -uo pipefail
+root="$(cd "$(dirname "$0")/../../../.." && pwd)"
+fail=0
+chk() { if eval "$2" >/dev/null 2>&1; then echo "ok   $1"; else echo "FAIL $1"; fail=1; fi; }
+chk "pdftotext on PATH"            "command -v pdftotext"
+chk "pdfinfo on PATH"              "command -v pdfinfo"
+chk "python3 can import fitz"      "python3 -c 'import fitz'"
+chk "tools/ scripts executable"    "test -x '$root/tools/check_all.sh' -a -x '$root/tools/test_checks.sh' -a -x '$root/tools/extract_text.py' -a -x '$root/tools/render_pages.py'"
+chk "check-script self-test passes" "'$root/tools/test_checks.sh'"
+if [ -f "$root/work/manifest.json" ]; then
+  n=$(python3 -c "import json;print(json.load(open('$root/work/manifest.json'))['pages'])")
+  chk "work/text has $n page files"  "test \$(ls '$root/work/text' | grep -c '^p[0-9]*\.txt$') -eq $n"
+  chk "work/pages has $n page PNGs"  "test \$(ls '$root/work/pages' | grep -c '^p[0-9]*\.png$') -eq $n"
+else
+  echo "info work/manifest.json absent: Phase 0 not run on the real paper (fine for fixture runs)"
+fi
+[ "$fail" = 0 ] && echo "PASS: doctor" || { echo "FAIL: doctor"; exit 1; }

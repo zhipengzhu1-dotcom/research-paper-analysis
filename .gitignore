@@ -1,3 +1,4 @@
 .DS_Store
 __pycache__/
 work/reading_log.tsv.bak
+.claude/skills/verify/evidence/

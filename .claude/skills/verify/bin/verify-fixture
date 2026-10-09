@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Create an isolated run directory with a two-page fixture PDF. Prints the run dir path.
+# Usage: run=$(.claude/skills/verify/bin/verify-fixture)
+set -euo pipefail
+run="${TMPDIR:-/tmp}/verify-paper-$$-$(date +%s)"
+mkdir -p "$run"
+python3 - "$run/fixture.pdf" <<'PY'
+import sys, fitz
+d = fitz.open()
+p = d.new_page(); p.insert_text((72, 72), "Fixture page one. Alpha beta gamma.")
+p = d.new_page(); p.insert_text((72, 72), "Fixture page two. Zeta eta.")
+d.save(sys.argv[1])
+PY
+echo "$run"
