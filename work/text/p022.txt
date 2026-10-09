@@ -1,0 +1,66 @@
+where y ref is the reference value and ŷ is the value for a proposal molecule. Tier-2 tasks minimize the binding-
+affinity score, with y ref equal to the seed binding affinity. The task-specific normalization scales and other reward
+hyperparameters are summarized in Table A1.
+    The constraint reward averages the scores for all N constraints:
+                                                                    1 N
+                                                                      X
+                                                   r constraint =          ci ,                                       (A4)
+                                                                    N i =1
+where c i is the score for constraint i . This quantity can also be interpreted as the degree to which constraints are
+satisfied. For integer-valued or Boolean constraints, the constraints are hard ones
+                                 (
+                                  1, if the proposed molecule satisfies hard constraint i ,
+                            ci =                                                                                  (A5)
+                                  0, otherwise.
+For continuous-valued properties (e.g., LogP, TPSA), we define soft constraints
+                               
+                               1,
+                                                      if the property is within range,
+                          ci =        ·
+                                         1 di
+                                           µ    ¶2 ¸                                                                  (A6)
+                               exp −
+                                                    , otherwise.
+                                         2 s σi
+where s is a scaling factor, σi is the estimated standard deviation of the property associated with constraint i ,
+computed over all training molecules from ZINC, and d i is the distance to the closest range boundary. The scaling
+factor allows generations that marginally violate constraints to receive partial credit, providing denser signal.
+    For every tool call in a rollout, we assign a small tool call penalty r tool . This reward ensures that the model is
+able to carry out designs efficiently, without excessively relying on tools during a design campaign, which becomes
+important for expensive tool calls. We note that we ramp up the tool call penalty linearly from 0 to the target value
+over 1000 group scoring steps, where the number of group scoring steps in a trainer step is the ratio of the batch
+size to the group size, e.g., for a batch size of 1024 and a group size of 16, each trainer step corresponds to 64 group
+scoring steps. When doing curriculum training with a mixture of Tier-1 and Tier-2 tasks as in the T1(a)–Mix(b)
+models, we scale the number of tool call penalty warmup steps to 250 for the Tier-1 tasks and 750 for the Tier-2
+tasks so that the full tool call penalty takes effect for both sets of tasks at the same trainer step. We found that this
+linear warmup is important for the model to learn how to use the tools. Without the warmup, the model would
+learn catastrophically conservative tool call behavior.
+    The r format reward penalizes a missing or unparsable response and is zero for correctly formatted responses.
+Finally, r invalid penalizes a parsable response that is chemically invalid or cannot be scored. Table A1 lists all reward
+hyperparameters for the runs in Figure 3, and Appendix C.2 reports results from alternative reward hyperparameters.
+We note that we only compute a single reward for the full trajectory; a useful possible extension is to train on rewards
+at the turn level, and we leave that for future work.
+
+Table A1. Reward hyperparameters used for Tier-1 and Tier-2 tasks. Here, σ y is the standard deviation of the Tier-1 target
+property computed over all molecules in ZINC, and y ref is the seed binding-affinity score for Tier-2 tasks.
+
+                                   Hyperparameter                            Tier-1   Tier-2
+                                   Objective scaling factor k                10.0     10.0
+                                   Objective normalization τ                 σy       |y ref |
+                                   Soft-constraint scaling factor s          0.1      0.1
+                                   Objective weight w obj                    0.5      0.75
+                                   Constraint weight w constraint            0.5      0.25
+                                   Tool call penalty r tool                  −0.001   −0.001
+                                   Format penalty r format                   −0.5     −0.5
+                                   Invalid-molecule penalty r invalid        −0.001   −0.001
+
+
+
+
+B Training details
+For all post-training experiments, we start with the Qwen 3.6 (base) (Qwen3.6-35B-A3B (Qwen Team, 2026)) model
+checkpoint and use prime-rl (Prime Intellect, 2025) to carry out large-scale asynchronous reinforcement learning.
+
+
+                                                              22
+

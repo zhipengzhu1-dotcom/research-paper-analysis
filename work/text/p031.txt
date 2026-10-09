@@ -1,0 +1,31 @@
+Mean fraction of unique molecules
+                                    1.0
+                                                                                                                     n=39                            n=38
+                                    0.8        n=40
+                                                                                         n=39   n=40   n=38   n=40
+                                                                                                                                n=20   n=32
+                                                                                                                                              n=23
+                                                                           n=40   n=40
+                                                      n=40   n=40   n=40
+
+                                    0.6
+
+                                    0.4
+
+                                    0.2
+
+                                    0.0
+                                                  0) 0) 0) 0) 0) 0) 0) 0) 0) 0) 0)                                                .8   5 .5 ol
+                                             (1 50 2(15 ix(20 ix(10 2(20 2(25 2(10 ix(15 ix(5 ix(25 -T2(5                     us 4 Opus PT 5 5.6-s
+                                           T )-T -M -M )-T )-T )-T -M )-M -M 0)
+                                                 0    )     )     0    0    0    )     0    )     5                         Op          G PT
+                                           (1 35 (300 (400 1(30 1(25 1(40 (350 1(45 (250 T1(4                                             G
+                                          T T1 T1             T     T    T T1      T T1
+       Figure A10. The fraction of unique molecules averaged for each model over the test set systems where that model generated five
+       valid final molecules; the number of such systems is annotated above each bar.
+
+
+
+
+                                                                                                31
+

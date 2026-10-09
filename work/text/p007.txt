@@ -1,0 +1,59 @@
+Table 1. The training curricula where every run is trained for a total of 500 steps. Runs are named by the tier of tasks used for
+training—“T1” for Tier-1 tasks and “T2” for Tier-2 tasks—and the number of steps trained using those tasks, in parentheses.
+For example, T1(a)–T2(b) trains for a steps on Tier-1 tasks followed by b steps on only Tier-2 tasks. We vary this condition in
+T1(a)–Mix(b) where we train for a steps on Tier-1 tasks followed by b steps on a 25% : 75% mixture of Tier-1 to Tier-2 tasks.
+
+               Condition             Tier-1 steps   Second-stage steps     Second-stage batch (Tier-1 : Tier-2)
+               T1(500)                       500                      0                                       —
+               T2(500)                         0                    500                               0% : 100%
+               T1(250)–T2(250)               250                    250                               0% : 100%
+               T1(300)–T2(200)               300                    200                               0% : 100%
+               T1(350)–T2(150)               350                    150                               0% : 100%
+               T1(400)–T2(100)               400                    100                               0% : 100%
+               T1(450)–T2(50)                450                     50                               0% : 100%
+               T1(250)–Mix(250)              250                    250                               25% : 75%
+               T1(300)–Mix(200)              300                    200                               25% : 75%
+               T1(350)–Mix(150)              350                    150                               25% : 75%
+               T1(400)–Mix(100)              400                    100                               25% : 75%
+               T1(450)–Mix(50)               450                     50                               25% : 75%
+
+
+
+for Tier-2 tasks to be the best performing combination, and so we focus our analysis on this condition; unless
+otherwise stated, we refer to this set of models as our trained models. For more details on the reward functions used,
+see Appendix A.
+    Inspired by recent work which has shown that curriculum-style reinforcement learning is beneficial for learning
+across a mixture of tasks with varying difficulty (Parashar et al., 2026; Xu et al., 2026), we also explore how various
+training curricula impact downstream performance. We define various classes of curricula that we use for training
+in Table 1 and discuss results in Section 6. We consider both the effect of training directly on Tier-1 tasks and Tier-2
+tasks starting from the Qwen 3.6 (base) model for 500 steps (denoted by T1(500) and T2(500) in Table 1, respectively)
+and mixing the two tasks in different stages. T1(a)–T2(b) denotes training for a steps on Tier-1 tasks followed by b
+steps on only Tier-2 tasks and T1(a)–Mix(b) denotes training for a steps on Tier-1 tasks followed by b steps on a
+25% : 75% mixture of Tier-1 and Tier-2 tasks. We find that training on Tier-1 tasks alone transfers to the downstream
+SQM evaluation, closing much of the gap between Qwen 3.6 (base) and frontier models. Additionally, we observe
+that adding the Tier-2 tasks in both the T1(a)–T2(b) and T1(a)–Mix(b) cases improves performance over Tier-1
+only training, with trained models exceeding frontier-level performance. While we do not obtain a clear “scaling
+law” where increased cost leads to increased performance, we do see that the more expensive curriculum training
+approaches outperform the cheaper Tier-1 only training.
+
+
+6 Results
+6.1 Training dynamics
+We first examine the progression of rewards during training in Figure 2 for both the Tier-1 tasks and Tier-2 tasks,
+where the reward is defined in Equation 11. We see that for the Tier-1 only model in the left panel, the reward starts
+out at a negative value of −0.255 but quickly climbs to a higher positive value, reaching a value of 0.871 by step 500,
+indicating that the Tier-1 environment is easy for the model to learn. For the curriculum-trained models where the
+second stage is a mixture of tasks, we observe that performance on the Tier-1 tasks degrades slightly. However, these
+models are able to recover most of the degradation during training, indicating that rebalancing the training with an
+emphasis on the Tier-2 environment does not destroy the model’s capabilities on the Tier-1 environment.
+    During the second stage of curriculum training, we see that the initial performance on the Tier-2 tasks is better
+when training on the mixture of Tier-1 and Tier-2 tasks compared to only training on Tier-2 tasks. However, this
+reward differential quickly dissipates, with rewards for both conditions reaching a similar magnitude within 50
+steps. Additionally, we see that training on only Tier-2 tasks results in a better Tier-2 reward compared to training on
+a mixture of Tier-1 and Tier-2 tasks when the second stage is shorter than the first stage. When both stages are of
+equal step length, training on a mixture of tasks is better than training on Tier-2 only, suggesting that the model has
+
+
+
+                                                               7
+

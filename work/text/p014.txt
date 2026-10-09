@@ -1,0 +1,49 @@
+References
+Anthropic (June 2026a). Claude Fable 5 & Claude Mythos 5 System Card. Tech. rep. Anthropic. URL: https://www-
+   cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf (visited on 08/06/2026).
+— (Aug. 2026b). How Claude is accelerating protein design and analytical chemistry. URL: https://www.anthropi
+  c.com/research/Claude-accelerates-protein-design (visited on 08/31/2026).
+— (May 2026c). Introducing Claude Opus 4.8. URL: https://www.anthropic.com/news/claude-opus-4-8
+  (visited on 08/21/2026).
+— (July 2026d). Introducing Claude Opus 5. URL: https://www.anthropic.com/news/claude-opus-5 (visited
+  on 08/21/2026).
+Bae, Sanghwan, Jiwoo Hong, Min Young Lee, Hanbyul Kim, JeongYeon Nam, and Donghyun Kwak (Jan. 2026). Online
+   Difficulty Filtering for Reasoning Oriented Reinforcement Learning. DOI: 10.48550/arXiv.2504.03380.
+Batatia, Ilyes, Dávid Péter Kovács, Gregor N. C. Simm, Christoph Ortner, and Gábor Csányi (Jan. 2023). MACE: Higher
+   Order Equivariant Message Passing Neural Networks for Fast and Accurate Force Fields. DOI: 10.48550/arXiv.
+   2206.07697.
+Batzner, Simon, Albert Musaelian, Lixin Sun, Mario Geiger, Jonathan P. Mailoa, Mordechai Kornbluth, Nicola
+   Molinari, Tess E. Smidt, and Boris Kozinsky (May 2022). “E(3)-equivariant graph neural networks for data-
+   efficient and accurate interatomic potentials”. In: Nature Communications 13.1, p. 2453. DOI: 10.1038/s41467-
+   022-29939-5.
+Bengio, Yoshua, Jérôme Louradour, Ronan Collobert, and Jason Weston (June 2009). “Curriculum learning”. In:
+   Proceedings of the 26th Annual International Conference on Machine Learning. ICML ’09. New York, NY, USA:
+   Association for Computing Machinery, pp. 41–48. ISBN: 978-1-60558-516-1. DOI: 10.1145/1553374.1553380.
+Bickerton, G. Richard, Gaia V. Paolini, Jérémy Besnard, Sorel Muresan, and Andrew L. Hopkins (Feb. 2012). “Quanti-
+   fying the chemical beauty of drugs”. In: Nature Chemistry 4.2, pp. 90–98. DOI: 10.1038/nchem.1243.
+Buterez, David, Jon Paul Janet, Steven J. Kiddle, Dino Oglic, and Pietro Lió (Feb. 2024). “Transfer learning with
+   graph neural networks for improved molecular property prediction in the multi-fidelity setting”. In: Nature
+   Communications 15.1, p. 1517. DOI: 10.1038/s41467-024-45566-8.
+Buttenschoen, Martin, Garrett M. Morris, and Charlotte M. Deane (Mar. 2024). “PoseBusters: AI-based docking
+   methods fail to generate physically valid poses or generalise to novel sequences”. In: Chemical Science 15.9,
+   pp. 3130–3139. DOI: 10.1039/d3sc04185a.
+Chennakesavalu, Shriram, Frank Hu, Sebastian Ibarraran, and Grant M. Rotskoff (2025). “Aligning Transformers
+   with Continuous Feedback via Energy Rank Alignment”. In: The Thirty-ninth Annual Conference on Neural
+   Information Processing Systems. URL: https://openreview.net/forum?id=SXxlb1miXS.
+Chennakesavalu, Shriram, Kirill Shmilovich, Hayley Weir, Colin Grambow, John Bradshaw, Patricia Suriana, Chen
+   Cheng, and Kangway Chuang (Apr. 2026). Evaluating the Progression of Large Language Model Capabilities for
+   Small-Molecule Drug Design. DOI: 10.48550/arXiv.2604.16279.
+Cobbe, Karl, Vineet Kosaraju, Mohammad Bavarian, Mark Chen, Heewoo Jun, Lukasz Kaiser, Matthias Plappert,
+   Jerry Tworek, Jacob Hilton, Reiichiro Nakano, Christopher Hesse, and John Schulman (Nov. 2021). Training
+   Verifiers to Solve Math Word Problems. DOI: 10.48550/arXiv.2110.14168.
+DeepSeek-AI et al. (Apr. 2026). DeepSeek-V4: Towards Highly Efficient Million-Token Context Intelligence. DOI:
+   10.48550/arXiv.2606.19348.
+Degen, Jörg, Christof Wegscheid-Gerlach, Andrea Zaliani, and Matthias Rarey (2008). “On the Art of Compiling and
+   Using ’Drug-Like’ Chemical Fragment Spaces”. In: ChemMedChem 3.10, pp. 1503–1507. DOI: 10.1002/cmdc.
+   200800178.
+Durairaj, Janani, Yusuf Adeshina, Zhonglin Cao, Xuejin Zhang, Vladas Oleinikovas, Thomas Duignan, Zachary
+   McClure, Xavier Robin, Danny Kovtun, Emanuele Rossi, Guoqing Zhou, Srimukh Veccham, Clemens Isert,
+
+
+                                                       14
+

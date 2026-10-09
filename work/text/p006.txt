@@ -1,0 +1,58 @@
+    Next, we define the second tier of tasks to be direct analogs of the held-out SQM evaluation tasks. These tasks
+are structure aware like the evaluation task; however, we score “binding affinity” using Chemgauss4 (McGann, 2011;
+McGann, 2012), a structure-based scoring function that is substantially cheaper and simpler than SQM. Additionally,
+we constrain the design space to be drug-like by defining a fixed set of physicochemical constraints over properties
+such as the molecular weight, number of heavy atoms, and the number of hydrogen bond donors (see Appendix A
+for the full set of constraints). In these tasks, the model is provided with “textified” structural information, where
+various pocket features and ligand–pocket interactions are passed in as text (see Appendix A). Because Chemgauss4
+requires a three-dimensional binding pose, we define a single scoring tool that first uses POSIT (Kelley et al., 2015)
+to dock the proposed molecule into the protein pocket, using the crystallographic pose of the lead molecule as a
+template, and then scores the resulting pose with Chemgauss4. This consolidated scoring tool takes on the order of
+seconds and is significantly cheaper than SQM; however, it is significantly more expensive than evaluations in the
+Tier-1 tasks. We refer to this set of tasks as our “Tier-2” tasks.
+    For our Tier-1 tasks, the starting molecules are taken from the ZINC dataset and we precompute all 116 RDKit
+and OpenEye properties for each molecule. In each task instance, we select a random property from the full set
+of 116 as the target property to maximize or minimize, and randomly select 2–4 other properties as constraints,
+together with a scaffold constraint requiring the molecule to retain a specified core substructure of the starting
+molecule. After filtering out pathological tasks (see Appendix A), we initialize constraints around the starting
+molecule and perturb a random subset of the constraints such that the starting molecule violates at least one of
+the constraints. Using this approach, we generate a total of 200 000 open-ended synthetic design tasks for Tier-1
+training.
+    For both our Tier-2 tasks and held-out SQM evaluation tasks, we use ligand–receptor pairs from the PLINDER
+dataset (Durairaj et al., 2024), a large dataset of experimentally determined protein–ligand structures. We only include
+pairs where the starting ligand has molecular weight between 200 and 600 Daltons, a range typical of small-molecule
+drugs. Additionally, for each ligand–receptor pair, we curate a list of key interactions between the ligand and the
+pocket, including hydrogen-bonding interactions and unsatisfied polar groups in the binding pocket near the ligand,
+using this to generate the “textified” structural information. In total, we obtain 999 ligand–receptor pairs for training
+and hold out an additional set of 40 for our SQM evaluation setting. For more details on the dataset preparation and
+prompt structure for both Tier-1 and Tier-2 tasks, see Appendix A.
+
+
+5 Training
+Due to the significant imbalance in the dataset size, task difficulty, and task training cost across the two tiers, we
+explore various training recipes to understand how recipe construction impacts performance on the final evaluation
+task. We consider two different axes to optimize: the type of training curricula and the reward function. Across all
+recipes, we post-train the model for a total of 500 steps to standardize comparisons. All post-training experiments
+start from the same open-weight Qwen3.6-35B-A3B model (Qwen Team, 2026), hereafter referred to as the Qwen 3.6
+(base) model. The model is a Mixture-of-Experts (MoE) model with roughly 35 billion total parameters, of which only
+about 3 billion are active per token. Finally, for frontier model evaluations, we test Claude Opus 4.8 (Anthropic, 2026c),
+Claude Opus 5 (Anthropic, 2026d), GPT-5.5 (OpenAI, 2026b), GPT-5.6 Sol (OpenAI, 2026a), as well as GLM-5.2 (GLM-5-Team
+et al., 2026) at FP8 precision. For more details on model training and evaluation, see Appendix B.
+     For all training runs, we define a standard reward that consists of an objective term, a constraint term, a tool call
+reward, and auxiliary formatting rewards
+
+                           R total = w obj r obj + w constraint r constraint + n tool r tool + r format + r invalid .     (11)
+
+The objective reward (r obj ) scores how well the model performs on its target task (i.e., property optimization), and
+the constraint reward (r constraint ) measures the degree of constraint satisfaction. We also add a penalty for generating
+responses that are parsable but lead to invalid molecules or molecules that fail scoring (r invalid ), and a penalty
+for generating responses that cannot be parsed due to missing answer tags (r format ). To prevent the model from
+excessively calling tools during a design campaign, we add a small tool call penalty (r tool ) for each tool call, and n tool
+is the total number of tool calls made. From initial tests, we found that it was beneficial to add a small warmup of
+1000 scored groups for the tool call penalty corresponding to ∼16 trainer steps, as a high initial tool call penalty
+would prevent the model from using tools and a low tool call penalty would result in excessive tool calls. We explored
+various w obj and w constraint and found w obj = 0.5, w constraint = 0.5 for Tier-1 tasks and w obj = 0.75, w constraint = 0.25
+
+
+                                                                       6
+

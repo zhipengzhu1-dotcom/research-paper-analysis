@@ -1,0 +1,62 @@
+TURN BUDGET
+You have 15 turns total. Each turn is either a molecule proposal OR a tool call -- both
+count toward the limit.
+
+TOOL USE
+You have access to a property-calculation tool. Each tool call incurs a small cost, but
+returns precise property values that help you make better proposals. You must decide when
+the information gain from a tool call is worth the cost.
+
+OUTPUT FORMAT
+Each molecule proposal must be its own message containing both of the following tag blocks:
+
+<|reasoning_summary_start|>
+[Your reasoning: what molecule you are evaluating, what modifications you made, which
+constraints you are addressing]
+<|reasoning_summary_end|>
+
+<|answer_start|>
+[Molecule representation only -- a valid molecule representation]
+<|answer_end|>
+
+Do NOT include tool calls in the same message as your molecule proposal. If you want to
+evaluate a molecule’s properties, first propose it in one message, then call the property-
+calculation tool in a separate message.
+
+AVAILABLE PROPERTIES
+[... full list of available tools/properties omitted for brevity ...]
+
+EXAMPLE
+Message 1 (call tool to evaluate starting molecule):
+[Call the property-calculation tool on the starting molecule]
+
+Message 2 (propose molecule based on results):
+"Based on the property calculations, logp is too high. I will add a hydroxyl group to
+reduce lipophilicity.
+
+<|reasoning_summary_start|>
+Adding hydroxyl at the para position to reduce logp while maintaining the required scaffold
+ and improving QED.
+<|reasoning_summary_end|>
+
+<|answer_start|>
+NS(=O)(=O)c1ccc(NC(=O)Nc2ccc(O)c(F)c2)cc1
+<|answer_end|>"
+
+REQUIREMENTS
+1. Molecule proposals and tool calls must be in separate messages.
+2. The answer tags must contain ONLY a single valid molecule representation.
+3. Your LAST message MUST include the answer tags with your final molecule. This can be
+your best molecule from any point in the conversation -- you do not need to propose
+something new if you already found a good candidate.
+
+GOAL
+Your goal is to optimize a target property of the starting molecule while satisfying all
+constraints below. You are scored on the quality of your final proposed molecule.
+
+Starting molecule: COc1ccccc1SCC(=O)N[C@@H](C)c1ccon1
+
+
+
+                                            35
+

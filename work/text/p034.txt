@@ -1,0 +1,65 @@
+(Table A4, continued)
+Group               Property                                        Description
+                    oe_connective_complexity                        Connectivity component of OpenEye molecular complexity
+                    oe_symmetry_complexity                          Symmetry component of OpenEye molecular complexity
+                    oe_elemental_complexity                         Elemental-diversity component of OpenEye molecular complexity
+                    oe_aromatic_atom_count                          Number of aromatic atoms
+                    oe_aromatic_bond_count                          Number of aromatic bonds
+                    oe_aromatic_ring_count                          Number of aromatic rings (OpenEye Ritchie definition)
+                    oe_ring_system_count                            Number of distinct (fused) ring systems
+                    oe_is_macrocycle                                Whether the molecule contains a macrocyclic ring (≥ 10 atoms)
+                    oe_ring_bond_count                              Number of bonds that are part of a ring
+                    oe_longest_unbranched_chain                     Length of the longest unbranched heavy-atom chain
+                    oe_halide_fraction                              Fraction of heavy atoms that are halogens
+                    oe_unspecified_bond_stereo_count                Number of double bonds with unassigned E/Z configuration
+                    oe_anionic_carbon_count                         Number of formally negatively-charged carbon atoms
+                    oe_net_charge_neutral_ph                        Net formal charge after OpenEye neutral-pH (7.4) protonation
+
+
+
+Prompt/Response 1. The core system prompt. It is shared verbatim by both the Tier-1 and Tier-2 environments, so it is shown
+only once. It fixes the standard molecular representation conventions and instructs the model to close every response with a
+structured reasoning summary (purple tags) and a single final answer (green tags); those tag pairs are what the reward pipeline
+parses.
+
+
+     SYSTEM PROMPT
+     You are a helpful scientific assistant with expertise in molecular design, computational
+     biology, and chemistry.
+     When working with molecular and biological data, use standard conventions:
+     - Molecular representations: SMILES, SELFIES, InChI, IUPAC names, SMARTS patterns,
+     molecular formulas
+     - Protein sequences: single-letter amino acid codes (A, C, D, E, F, G, H, I, K, L, M, N, P,
+      Q, R, S, T, V, W, Y). When providing a protein sequence, output one continuous string of
+     amino acids with no spaces, unless the prompt specifies otherwise.
+     - Standard units: g/mol for molecular weight, Angstroms for distances
+     At the end of your response, provide a summary of your reasoning and the answer:
+     On a new line provide the reasoning summary between <|reasoning_summary_start|> and
+     <|reasoning_summary_end|> tags.
+     On a new line provide the final answer between <|answer_start|> and <|answer_end|> tags.
+     After your thinking, the <|answer_start|> and <|answer_end|> tags must each appear exactly
+     once in your response, enclosing your single final answer.
+
+     Example format:
+
+     <|reasoning_summary_start|>[summary of reasoning and analysis]<|reasoning_summary_end|>
+
+     <|answer_start|>[final answer]<|answer_end|>
+
+     Note: The brackets [ ] above are placeholders only - do not include them in your actual
+     response.
+
+
+
+Prompt/Response 2. Tier-1 environment: a rendered user prompt (one task instance). It specifies the 15-turn budget, the
+property-calculation tool and its cost, the required per-message tag format, the full list of available RDKit/OpenEye properties,
+and this instance’s starting molecule, target property, and constraints.
+
+
+     USER PROMPT
+     Your task is to design molecules that optimize a target molecular property while satisfying
+      user-provided constraints.
+
+
+                                                               34
+

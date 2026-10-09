@@ -1,0 +1,66 @@
+    IPO applies the policy-gradient term only to tokens whose probabilities remain within a symmetric trust region
+
+                  K j = (t , ℓ) : 1 ≤ t ≤ T j , 1 ≤ ℓ ≤ L j ,t , ¯πθ (a j ,t ,ℓ | h j ,t ,ℓ ) − µ j ,t ,ℓ (a j ,t ,ℓ | h j ,t ,ℓ )¯ ≤ ϵIPO .
+                          ©                                              ¯                                                                    ¯   ª
+                                                                                                                                                       (9)
+
+The loss is                                                                                                                              
+                                                                      G                                            T j L j ,t
+                                                        1
+                                                                                                   w j ,t ,ℓ + β                ρ̄ 2j ,t ,ℓ  ,
+                                                                      X                  X                         X   X
+                              LIPO (θ) = P             PT j
+                                                                              −A j                                                                   (10)
+                                                G                                                                  t =1 ℓ=1
+                                                j =1     t =1   L j ,t j =1           (t ,ℓ)∈K j
+
+where ϵIPO is the trust-region threshold and β is the trainer–inference mismatch penalty coefficient. The rollout-level
+advantage A j is applied to every retained token in rollout j . The first term therefore increases the likelihood of
+tokens from above-average rollouts and decreases the likelihood of tokens from below-average rollouts, while the
+second term penalizes disagreement between the trainer and behavior policies over all assistant-generated tokens.
+We use β = 10−3 and allow each behavior policy to lag the trainer by at most two optimization steps; the remaining
+training hyperparameters are reported in Table A2.
+
+
+4 Synthetic lead optimization tasks
+In this work, we explore using LLMs for lead optimization tasks, where the goal is to optimize a starting seed
+molecule towards desired properties. Additionally, we construct these tasks in such a way that the LLM is the
+primary molecular designer but can still leverage external tools to help guide and inform the design process.
+    Here, we consider the primary task of optimizing small molecules to have increased affinity for a predefined
+protein receptor, while still respecting various physicochemical constraints. We approximate binding affinity using
+SQM2.20 (Pecina et al., 2024), a universal physics-based scoring function using semiempirical quantum mechanical
+methods, hereafter referred to as SQM. Compared with conventional scoring functions used in molecular docking
+(e.g., Glide (Friesner et al., 2004), Vina (Trott and Olson, 2010), Chemgauss4 (McGann, 2011; McGann, 2012)), SQM
+provides a more explicit treatment of the electronic effects governing protein–ligand interactions while remaining
+computationally practical for large molecular systems. SQM has been shown to achieve accuracy comparable to
+substantially more expensive DFT calculations and relatively strong agreement with experimental binding affinities
+but at a higher computational cost than docking; a single SQM evaluation takes on the order of tens of minutes. At
+the same time, higher-fidelity methods such as free energy perturbation (FEP), which are widely used for predicting
+binding affinity changes during lead optimization (L. Wang et al., 2015; Ross et al., 2023; Qian et al., 2024), are substantially
+more expensive and can require multiple GPU-hours per calculation. SQM therefore provides a useful middle
+ground; it offers a substantial step up in fidelity over conventional docking-based scoring functions, while remaining
+considerably cheaper than FEP. This tradeoff makes SQM more practical for our benchmark, although its cost is still
+significant in an RLVR setting, where repeated tool calls and reward evaluations can result in stale rollouts during
+training.
+    In order to train the model to succeed in lead optimization tasks, we consider training the model on a hierar-
+chy of synthetic molecular design tasks that follow the same abstraction—optimizing a property under a set of
+constraints—and investigate whether training on these tasks can generalize to the harder and more expensive SQM
+lead optimization tasks. Additionally, we explore various training recipes consisting of different training curricula,
+task mixtures, and reward functions and examine how that impacts performance on SQM lead optimization tasks.
+    We define two tiers of synthetic tasks of varying cost and simplicity. The first tier of tasks exclusively employs
+RDKit (RDKit, 2026) and OpenEye (OpenEye, Cadence Molecular Sciences, 2025) oracles (see Appendix A for the full
+set of oracles and tools), consisting of cheap cheminformatics oracles that range from simple atom counters to
+more complex physicochemical descriptors (e.g., LogP, TPSA). We randomly construct tasks, where we sample the
+property to optimize, whether to maximize or minimize the property, and a set of property constraints to satisfy,
+where all properties, both the target and constraints, are computable by RDKit and/or OpenEye oracles. To ensure
+that the sampled constraints are chemically plausible, we derive them from a molecule randomly sampled from
+ZINC, a large database of commercially available compounds (Tingle et al., 2023). Finally, we filter out any generated
+tasks with clear pathologies, such as trying to maximize or minimize a property that the starting molecule already
+saturates or optimizing a non-scalar property. The core advantage of these tasks is that they can be rapidly generated
+and are easily verifiable, providing a diverse and scalable dataset for model post-training. We refer to this set of
+tasks as our “Tier-1” tasks.
+
+
+
+                                                                                  5
+

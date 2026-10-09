@@ -1,0 +1,32 @@
+                                             SQM calls                Rollout length
+
+
+             Qwen 3.6 (base)
+
+                       T1(500)
+
+                       Trained
+
+                      GLM 5.2
+
+                      Frontier
+
+                                 0.0       2.5       5.0       7.5      10.0      12.5      15.0      17.5
+                                                                Turn number
+Figure A7. For each model, and the aggregated Trained and Frontier rows, the dots give the average turn of each of the five
+SQM calls and the shaded bar spans the average rollout length; models can make additional calls, but further scoring is refused.
+Average turn for the n th call is averaged only over those rollouts that made an n th call to the SQM scorer.
+
+
+
+to all of the curriculum-trained models. We exclude Qwen 3.6 (base) and GLM-5.2 from our analysis because they
+had few systems where the model generated five valid molecules, with only 6/40 for GLM-5.2 and 2/40 for Qwen 3.6
+(base). Among frontier models, the Claude models have the lowest diversity of generations. This phenomenon has
+also been identified in other works (Chennakesavalu, Shmilovich, et al., 2026; Han et al., 2026) on earlier generations of
+Claude Opus, where these Claude models were observed to search relatively narrow regions of chemical space.
+
+
+
+
+                                                              28
+

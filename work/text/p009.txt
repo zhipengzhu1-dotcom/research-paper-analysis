@@ -1,0 +1,59 @@
+Table 2. Lead-opt SQM evaluation with n = 200 rollouts per model across 40 systems. Reward (bal.) is the balanced reward
+0.5 · r obj + 0.5 · r constraint + penalties, ±1 system-clustered SE. Rel. BA impr. is the relative binding affinity improvement against
+T1(500) (the Tier-1 only base path; higher = tighter binding), ±1 paired SE over the 40 shared systems, the same as in Figure 3.
+Sys. impr. is the number of systems (out of 40) for which at least one rollout improves on the seed. Turns is the mean number
+of interaction turns. SQM turns is the mean number of turns in which score_sqm is called. Constr. % is the mean graded
+constraint reward averaged over all n rollouts – rollouts that produced no valid scored molecule count as 0. Models are ranked by
+balanced reward.
+
+      Model                   Reward (bal.) ↑      Rel. BA impr. ↑      Sys. impr. ↑     Turns     SQM turns        Constr. % ↑
+      T1(400)–T2(100)           0.623 ± 0.034         +3.18 ± 1.35                 37       7.7              5.7          93.3%
+      T1(300)–T2(200)           0.622 ± 0.034         +3.88 ± 1.98                 34       7.3              6.0          93.7%
+      T1(250)–Mix(250)          0.611 ± 0.034         +3.65 ± 1.81                 37       7.2              5.8          91.9%
+      T1(350)–Mix(150)          0.611 ± 0.031         +2.17 ± 0.78                 39      11.1              5.8          93.1%
+      T1(450)–Mix(50)           0.608 ± 0.036         +2.31 ± 0.93                 35       9.4              5.3          92.4%
+      T1(450)–T2(50)            0.607 ± 0.032         +2.07 ± 0.65                 36      11.6              5.6          93.9%
+      T1(350)–T2(150)           0.600 ± 0.032         +2.28 ± 1.13                 35      10.6              5.8          94.2%
+      T1(300)–Mix(200)          0.598 ± 0.034         +1.91 ± 0.85                 36       8.9              5.8          93.6%
+      T1(400)–Mix(100)          0.595 ± 0.033         +0.75 ± 0.65                 37      10.0              5.7          95.3%
+      T1(250)–T2(250)           0.594 ± 0.035         +2.76 ± 1.39                 38       9.1              5.9          92.9%
+      T1(500)                   0.570 ± 0.039            0.00 (ref )               35      11.2              4.5          94.0%
+      GPT-5.6 Sol               0.542 ± 0.040         +1.44 ± 1.14                 37      13.3              4.5          89.9%
+      Claude Opus 5             0.505 ± 0.043         −0.16 ± 1.23                 35      14.7              5.7          83.2%
+      Claude Opus 4.8           0.504 ± 0.039         +0.40 ± 1.14                 35      16.1              4.7          79.9%
+      GPT-5.5                   0.453 ± 0.047         +0.30 ± 0.96                 33      16.6              5.0          78.3%
+      GLM-5.2                   0.317 ± 0.041         −0.58 ± 1.53                 34      17.7              4.8          63.2%
+      Qwen 3.6 (base)           0.122 ± 0.039         −2.89 ± 1.56                 24      14.6              3.2          36.2%
+
+
+more concretely quantify model-specific gains as opposed to gains that might arise from a particular system being
+easy to optimize. Additionally, in these figures we also plot the performance of these models on the final test set as a
+function of training cost, defined as the total wall time required for training the model across the full recipe.
+    From Figure 3, we see that training on the simple Tier-1 tasks alone enables near-frontier-model-level per-
+formance on a much harder task, suggesting that the model is learning general molecular design principles that
+generalize to a much harder structure-based design task. Additionally, we see that the performance of all the
+curriculum-trained models exceeds the performance of the T1(500) baseline and that many of the curriculum-
+trained models exceed the performance of frontier models. Finally, we note that training on the Tier-2 tasks only
+starting from the Qwen 3.6 (base) model leads to mode collapse. This model generates degenerate single-turn
+policies that do not perform genuine optimization, further reinforcing the need for the curriculum training approach
+(see Figure A1 and Appendix C.1).
+    Next, we explore the relationship between performance and training cost, where we define cost as the total wall
+time required for training given that all models were trained for the same number of steps using the same hardware
+configuration (see Appendix B). Unsurprisingly, the T1(500) model was the cheapest to train in terms of total wall
+time, with all of the curriculum-trained models being more expensive given that a full rollout for a single Tier-2 task
+can take up to twice as long as a full rollout for a Tier-1 task. Notably, we do not see a clear “scaling law” between
+training time and performance; training with more expensive recipes does not necessarily translate to improved
+performance on the SQM lead optimization task.
+    We do see that models trained fully on the Tier-2 environment in the second stage of training after initializing
+from a T1(500) checkpoint are comparable to, or better performers than, their mixed counterparts. There is generally
+no clear benefit to mixing in tasks from Tier-1 during the second stage of training, suggesting that there is minimal
+risk of catastrophic forgetting during curriculum training. The performance of T1(300)–T2(200) and T1(400)–T2(100)
+models is better than that of the T1(300)–Mix(200) and T1(400)–Mix(100) models, respectively, and we observe
+comparable performance between the T1(350)–Mix(150)/T1(350)–T2(150) and T1(450)–Mix(50)/T1(450)–T2(50)
+pairs. The T1(250)–Mix(250) model is an exception, where training on the mixed environments leads to significantly
+better performance than T1(250)–T2(250).
+    In addition to the relative binding affinity improvement, we analyze auxiliary metrics (see Table 2) related to
+
+
+                                                                   9
+

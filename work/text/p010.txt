@@ -1,0 +1,75 @@
+                                                                GPT-5.6 Sol         Claude Opus 4.8           T1(500)          T1(400)–T2(100)
+                                           5flj                          4kax                            5fux                              7plr                         5fuy
+                              20                           40                                                               10.0                            5
+                                                                                           40                                7.5
+
+
+
+
+         Relative
+                              10                           20
+                                                                                           20                                5.0                            0
+                                                            0                                                                2.5
+                               0                                                            0
+                                                          −20                                                                0.0                          −5
+
+
+
+
+binding affinity (kcal/mol)
+                                           5hmw                          7vjt                            5k5m                              7pwy                         6y88
+                                                                                            0                                30                            20
+                           3                               6
+                           2                                                                                                 20                            10
+                                                           4                              −5
+                           1                               2                                                                 10                             0
+                           0                               0                              −10                                 0                           −10
+                          −1                              −2
+                                   1   2    3     4   5         1    2    3     4     5         1   2     3     4       5          1   2    3     4   5         1   2    3     4   5
+                                                                      Molecule number scored by SQM
+    Figure 4. Average cumulative maximum relative binding affinity throughout trajectories averaged across rollouts for 10 systems
+    and four models, where higher is better. The x-axis is the molecule number scored by SQM, which helps standardize the
+    comparison because all models have at most five SQM calls in their budget; models can make additional calls, but further scoring
+    is refused. In cases where the model does not make five SQM scoring calls, the best design is carried forward up to five SQM calls.
+
+
+
+   chemical constraint satisfaction and design efficiency to gauge the utility of a given model. First, we find that most
+   models, on average, are able to optimize the seed molecule across systems. However, more effective models are
+   able to demonstrate greater improvement on top of the seed’s binding affinity, while maintaining a high degree
+   of constraint satisfaction. Second, we see that trained models are more efficient designers, with many of the
+   curriculum-trained models submitting designs well before the maximum allowed 20 turns. For example, the top
+   performing T1(400)–T2(100) model takes on average 7.7 turns compared to the frontier models, which take on
+   average 13–18 turns. Notably, there is a decreasing progression in the average number of turns when going from
+   Qwen 3.6 (base) to the T1(500) model and then to curriculum-trained models, suggesting that each stage contributes
+   to the efficiency gains over the base model. Importantly, this more efficient design process results in fewer tokens
+   being consumed compared to frontier models for which total token count is computable (see Appendix C.4). The
+   trained models here are better designers at a cheaper cost.
+       Lastly, we look at the design trajectories of select models on a subset of the test systems. We include the best
+   performing frontier models, the baseline T1(500) model and one of the best performing trained models, T1(400)–
+   T2(100), in Figure 4. For each rollout, we compute the best relative binding affinity observed up to each SQM
+   scoring call, yielding a running-best trajectory. We then average these trajectories across five rollouts. We use a
+   running-best approach for visualization because the models do not always improve upon designs between turns,
+   with the optimization across models frequently exploring worse intermediate designs. This behavior is encouraging
+   because it indicates that the models are not greedy optimizers and instead engage in exploratory behavior to achieve
+   their optimization goals.
+
+
+    6.3 Chemical analysis of designs
+    Next, we investigate the chemical tendencies of our models. In Figure 5, we show the best submitted designs out
+    of five rollouts generated by GPT-5.6 Sol, Claude Opus 4.8, T1(500), and T1(400)–T2(100) for the 6pyy and 4ise
+    systems, where the required BRICS scaffold (Degen et al., 2008) is highlighted for all systems. These structures show
+    that our trained and frontier models are able to make subtle chemical changes to achieve gains in predicted affinity,
+    showing that they can effectively traverse design spaces dominated by activity cliffs.
+        In addition to visualizing individual designs, we also analyze recurring chemical motifs to understand the general
+    design principles that these models rely on when optimizing for binding affinity. In Figure 6, we plot the change
+    in heavy atoms against the change in halogens per edit. We find that frontier models tend to grow molecules and
+    halogenate throughout their design process whereas our trained models shrink molecules with a lesser propensity
+    for halogenation. Furthermore, we see that decreasing the molecular size is a behavior learned during curriculum
+    training, with the Qwen 3.6 (base) and T1(500) models both on average increasing the number of heavy atoms
+    per edit prior to any curriculum training. Additionally, there is a noteworthy gap between Qwen 3.6 (base) and
+
+
+
+                                                                                                    10
+

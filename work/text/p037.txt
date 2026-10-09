@@ -1,0 +1,63 @@
+These names are the valid inputs to the property-calculation tool only; they do not apply
+to the scoring tool(s). Property names must match exactly.
+[... full list of available tools/properties omitted for brevity ...]
+
+REQUIREMENTS
+1. Molecule proposals and tool calls must be in separate messages.
+2. Issue at most ONE tool call per message -- never batch multiple molecules or multiple
+tool calls into a single message. Score one molecule at a time.
+3. Use the expensive scoring tool(s) at most 5 times in total (further calls are refused);
+triage candidates with the cheap property-calculation tool first.
+4. The answer tags must contain ONLY a single valid SMILES string, with no labels or extra
+text.
+5. Your LAST message MUST include the answer tags with your final molecule (which may be
+the best one you found earlier).
+
+GOAL
+Seed molecule: CC(=O)C1CCC2C1(CCC3C2CCC4=CC(=O)CCC34C)C
+Seed molecule with atom-map labels (same molecule; each heavy atom is numbered): [CH3:19][C
+:4](=[O:23])[C@@H:13]1[CH2:9][CH2:10][C@H:16]2[C@@:18]1([CH2:12][CH2:11][C@H:15]3[C@H:14]2[
+CH2:7][CH2:5][C:2]4=[CH:1][C:3](=[O:22])[CH2:6][CH2:8][C@:17]34[CH3:20])[CH3:21]
+
+Propose a molecule that lowers the chemgauss4_score against this target while remaining a
+chemically reasonable, drug-like analog of the seed.
+
+BINDING CONTEXT (how the seed sits in the target’s pocket). Use it to preserve the seed’s
+key contacts and to look for productive additions: Ligand atom numbers below refer to the
+atom-map labels on the mapped seed SMILES.
+Key interactions the seed makes with the target:
+- strong H-bond: GLN48 (ligand atom 22)
+- H-bond (non-ideal) (water-mediated): HOH1 (ligand atom 22)
+Steric clashes in the seed pose (liabilities to relieve, not preserve): LEU38
+Unfilled polar sites near the ligand (room to add a complementary group):
+- acceptor GLN48 (sidechain), ~3.4A from ligand atom 22
+- acceptor ASN42 (sidechain), ~3.6A from ligand atom 12
+- acceptor PHE101 (backbone), ~4.0A from ligand atom 22
+Pocket residues lining the site (most ligand contact first): MET82, ASN42, LEU41, MET79,
+PHE101, GLN48, LEU38, CYS214
+
+Constraints:
+- Molecular weight < 600.0
+- 12 to 50 heavy atoms
+- LogP < 4.0
+- TPSA < 150.0
+- 0 to 4 hydrogen bond donors
+- 0 to 4 aromatic rings
+- 0 to 9 rotatable bonds
+- Use only these elements: C, H, N, O, P, S, F, Cl, Br, I (no other elements are allowed)
+- Must contain scaffold: CC12CCCC1C1CCC3=CC(=O)CCC3(C)C1CC2
+
+WORKFLOW
+1. Inspect the seed with the cheap property-calculation tool to understand its baseline
+properties.
+2. Propose structural modifications likely to improve binding, using cheap property
+calculations to narrow your ideas down to a shortlist.
+3. Score only your most promising candidates with the scoring tool(s), staying within the
+5-call budget -- one molecule per call.
+4. Iterate as budget allows, then output your best molecule in the final message.
+
+
+
+
+                                            37
+

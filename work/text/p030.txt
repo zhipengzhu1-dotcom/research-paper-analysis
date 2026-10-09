@@ -1,0 +1,27 @@
+  T1(350)–T2(150)
+  T1(300)–T2(200)
+  T1(250)–T2(250)
+   T1(450)–T2(50)
+  T1(400)–T2(100)
+ T1(300)–Mix(200)
+ T1(250)–Mix(250)
+ T1(350)–Mix(150)
+ T1(400)–Mix(100)
+  T1(450)–Mix(50)
+          T1(500)
+          GPT-5.5
+       GPT-5.6 Sol
+    Claude Opus 5
+  Qwen 3.6 (base)
+         GLM-5.2
+  Claude Opus 4.8
+                        0                  10                 20                  30                 40                 50
+                                                         Anion removal (%)
+Figure A9. For each model, the percentage of its scored candidates that remove an anionic group, over the 14 test set cases whose
+starting ligand was anionic.
+
+
+
+
+                                                               30
+

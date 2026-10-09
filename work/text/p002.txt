@@ -1,0 +1,57 @@
+learning-based approaches that leverage verifiable rewards (RLVR) to train language models that can generate
+molecules against complex design objectives and constraints (G. Ye et al., 2023; Fang et al., 2024; Narayanan et al.,
+2025; Chennakesavalu, Shmilovich, et al., 2026). While useful, many of these efforts train models with simple and
+cheaply evaluable chemical oracles that do not reflect the full complexity and cost of chemical oracles used in
+real-world drug discovery efforts (e.g., FEP). As such, these models cannot effectively design molecules with desired
+“high-fidelity” properties, limiting their utility in real-world drug discovery settings.
+    Post-training LLMs using an RLVR framework with more expensive oracles is challenging due to the online nature
+of training; expensive oracles can result in impractically long training times and/or severely stale rollouts when
+carrying out RL training asynchronously (Prime Intellect, 2025; Noukhovitch et al., 2025; GLM-5-Team et al., 2026). In this
+work, we ask whether we can post-train LLMs to be capable small-molecule designers for expensive, high-fidelity
+objectives by scaling training on cheaper synthetic molecular design tasks. In doing so, we investigate whether
+models can learn foundational molecular design principles on cheap tasks that can then enable more efficient
+learning on harder, more expensive design tasks.
+    Here, we consider the general design setting of small-molecule lead optimization and create a spectrum of
+post-training recipes that consist of varying mixtures of low-cost, low-fidelity design tasks and high-cost, high-
+fidelity design tasks. On held-out evaluation design tasks—which are too expensive to train on—we find that
+curriculum-based recipes that first train on low-fidelity tasks and later incorporate high-fidelity tasks perform best,
+with recipes that only include high-fidelity tasks having poor performance. Additionally, we show that with these
+curriculum-based recipes, we are able to post-train a small, 35-billion-parameter LLM that exceeds the performance
+of much larger frontier models, including those that have themselves been extensively trained on small-molecule
+tasks (Anthropic, 2026d). Taken together, the results here demonstrate that carefully constructed training recipes can
+enable LLMs to effectively search through chemical space and generate promising molecular candidates that satisfy
+complex, high-fidelity design objectives.
+
+
+2 Related work
+Transfer learning and post-training in chemistry and biology. Transfer learning (Pan and Yang, 2010; Yosinski et al.,
+2014; Weiss et al., 2016) has been extensively used in chemical contexts, including training on large datasets of “low-
+fidelity” properties and transferring to “high-fidelity” tasks (Buterez et al., 2024). Many early efforts used specialized
+models, including Graph Neural Networks (GNNs) (Thölke and Fabritiis, 2022; Batzner et al., 2022; Batatia et al., 2023; Heid
+et al., 2023). Recently, this has also been investigated in the context of post-training LLMs and LLM-like models for
+chemical and biological applications, including on small-molecule design (Narayanan et al., 2025; Chennakesavalu,
+Shmilovich, et al., 2026; Chennakesavalu, Hu, et al., 2025), protein design (Madani et al., 2023; Widatalla et al., 2024; Fallahpour
+et al., 2026; Ibarraran et al., 2026), and biology (Istrate et al., 2025; Anthropic, 2026a; Anthropic, 2026d; Anthropic, 2026b).
+These methods span both online RL methods on cheaply evaluable rewards and offline RL methods on expensive
+rewards; however, none of these efforts have extensively investigated carrying out online RL to train models that can
+effectively optimize computationally expensive properties.
+
+Synthetic data scaling for post-training. Scaling training data has been demonstrated to be effective for improving
+the performance of LLMs, both in the pretraining stage (Kaplan et al., 2020) and more recently in the post-training
+stage; using synthetic data to scale post-training has become a popular strategy for improving on math and general
+QA tasks (Guo et al., 2025; Kim et al., 2025; Goldie et al., 2025; Liang et al., 2025; Xu et al., 2026; NVIDIA et al., 2025), and has
+been especially fruitful for scaling RL training for programming tasks (Le et al., 2022; Sancaktar et al., 2026) and terminal-
+based tasks (Ivison et al., 2026; Merrill et al., 2026). Many data scaling strategies employ a curriculum learning (Elman,
+1993; Krueger and Dayan, 2009; Bengio et al., 2009; Kumar et al., 2010; Hacohen and Weinshall, 2019) approach, where training
+examples are staged according to difficulty with easier examples trained on first and harder examples trained on
+last. This has been shown to improve generalization and performance compared to training directly on complex
+examples because networks internalize foundational concepts that transfer positively for downstream tasks. More
+recently, curriculum learning has been extended to reinforcement learning for large language models to enhance
+reasoning and generalization (Qiu et al., 2025; Zeng et al., 2025; Bae et al., 2026; Parashar et al., 2026) where grouping
+and scheduling tasks based on difficulty helps improve model performance and accuracy in verifiable settings,
+specifically mathematics. Other approaches have found staged training of specialist models with a re-distillation
+back into a generalist model to be effective (Narayanan et al., 2025; DeepSeek-AI et al., 2026). These studies indicate
+
+
+                                                                 2
+

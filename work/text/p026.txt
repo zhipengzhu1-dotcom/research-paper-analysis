@@ -1,0 +1,61 @@
+     We enumerate five different cases and plot the breakdown in Figure A5. Outside of invalid proposals (“Failure”),
+we break down the response into whether a model submits a final molecule that it had previously scored or not
+(“unscored”). Within each of these categories, we characterize whether that final molecule was the best one (as
+measured by SQM score) or a suboptimal one, more than 0.1 kcal/mol worse than the best scored molecule. We see
+that all trained models, including T1(500), almost exclusively submit the best scored molecule, rarely submitting
+a worse scoring molecule; when they do, it is generally due to a constraint tradeoff reason, where they decide to
+submit a molecule with a worse SQM score but higher constraint satisfaction. In contrast, all frontier models are
+more prone to failures, submitting novel molecules that have not been scored, and submitting scored molecules
+with a suboptimal SQM score. This last characteristic suggests that frontier models are more likely to favor satisfying
+constraints over further improving the SQM score. Finally, we see that the Qwen 3.6 (base) model overwhelmingly
+fails to submit valid molecules.
+
+Table A3. Rollout outcomes over all n = 200 rollouts per model (40 systems × 5). A rollout is Successful if it produced a valid final
+molecule (RDKit-parsable SMILES in its <|answer_start|> block) that received a real SQM score. The two failure modes are
+Invalid formatting—no or unparsable final answer block—and Scoring failed—a parsable molecule that did not score via SQM
+(e.g., POSIT/docking failure).
+
+                            Model                 Successful     Invalid formatting      Scoring failed
+                            T1(250)–T2(250)               200                       0                 0
+                            T1(250)–Mix(250)              200                       0                 0
+                            T1(300)–T2(200)               200                       0                 0
+                            T1(350)–T2(150)               200                       0                 0
+                            T1(350)–Mix(150)              200                       0                 0
+                            T1(400)–Mix(100)              200                       0                 0
+                            T1(300)–Mix(200)              199                       0                 1
+                            T1(400)–T2(100)               199                       1                 0
+                            T1(450)–T2(50)                199                       1                 0
+                            T1(450)–Mix(50)               198                       2                 0
+                            T1(500)                       198                       0                 2
+                            GPT-5.6 Sol                   181                       2                17
+                            Claude Opus 5                 170                      19                11
+                            Claude Opus 4.8               161                      39                 0
+                            GPT-5.5                       156                      34                10
+                            GLM-5.2                       128                      71                 1
+                            Qwen 3.6 (base)                74                     123                 3
+
+
+    We further analyze the failures in Table A3, which breaks down the final submissions from the 200 rollouts into
+three different categories: successful, invalid formatting, and scoring failure (i.e., the generated “molecule” could not
+be scored with SQM). We see that all trained models, including T1(500), rarely fail to produce successful molecules
+due to extensive training on tasks of these formats. Surprisingly, we see that frontier models—Claude Opus 4.8,
+Claude Opus 5, GPT-5.5, and GLM-5.2—have a significant fraction of responses with invalid formatting. Finally,
+Qwen 3.6 (base) struggles extensively at formatting answers correctly.
+
+
+C.4 Analysis of model rollouts
+We plot the average number of characters from models’ rollouts in Figure A6, where we break down the rollouts
+into the reasoning block (where available) and non-reasoning block. Here, all trained models have the same
+hyperparameters as the models in Figure 3. We see that all the trained models output far fewer characters in their
+reasoning trace compared to the base model; the trained models are able to reason about molecular design tasks
+more efficiently and effectively in comparison to the Qwen 3.6 (base) model despite no explicit rollout length
+penalties during training. The GLM-5.2 model outputs reasoning traces with an order of magnitude more characters
+than those of the trained models. Finally, the reasoning traces of closed-source frontier models are not publicly
+accessible.
+    We also see that the post-trained models are spending fewer turns before their final proposal and calling the SQM
+scoring tools earlier on in a rollout, also explaining the lower overall character count per rollout. This demonstrates
+that trained models follow a more straightforward optimization strategy, proposing and refining designs against
+
+
+                                                                 26
+

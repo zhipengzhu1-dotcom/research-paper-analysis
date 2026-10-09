@@ -1,0 +1,22 @@
+Williams, Ronald J. (May 1992). “Simple statistical gradient-following algorithms for connectionist reinforcement
+   learning”. In: Machine Learning 8.3, pp. 229–256. DOI: 10.1007/BF00992696.
+Xu, Xin, Clive Bai, Kai Yang, Tianhao Chen, Yangkun Chen, Weijie Liu, Hao Chen, Yang Wang, Saiyong Yang, and
+    Can Yang (Apr. 2026). Composition-RL: Compose Your Verifiable Prompts for Reinforcement Learning of Large
+    Language Models. DOI: 10.48550/arXiv.2602.12036.
+Yao, Shunyu, Jeffrey Zhao, Dian Yu, Nan Du, Izhak Shafran, Karthik Narasimhan, and Yuan Cao (Mar. 2023). ReAct:
+   Synergizing Reasoning and Acting in Language Models. DOI: 10.48550/arXiv.2210.03629.
+Ye, Geyan, Xibao Cai, Houtim Lai, Xing Wang, Junhong Huang, Longyue Wang, Wei Liu, and Xiangxiang Zeng (Dec.
+    2023). DrugAssist: A Large Language Model for Molecule Optimization. DOI: 10.48550/arXiv.2401.10334.
+Ye, Tianzhu, Li Dong, Xun Wu, Shaohan Huang, and Furu Wei (Feb. 2026). On-Policy Context Distillation for Language
+    Models. DOI: 10.48550/arXiv.2602.12275.
+Yosinski, Jason, Jeff Clune, Yoshua Bengio, and Hod Lipson (Nov. 2014). How transferable are features in deep neural
+   networks? DOI: 10.48550/arXiv.1411.1792.
+Zeng, Weihao, Yuzhen Huang, Qian Liu, Wei Liu, Keqing He, Zejun Ma, and Junxian He (Aug. 2025). SimpleRL-Zoo:
+   Investigating and Taming Zero Reinforcement Learning for Open Base Models in the Wild. DOI: 10.48550/arXiv.
+   2503.18892.
+
+
+
+
+                                                        19
+

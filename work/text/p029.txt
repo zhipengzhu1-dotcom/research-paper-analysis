@@ -1,0 +1,38 @@
+                                                Anionic seeds                                   Neutral seeds
+                   T1(400)–Mix(100)
+                   T1(300)–Mix(200)
+                     T1(450)–T2(50)
+                   T1(350)–Mix(150)
+
+
+       Trained
+                    T1(350)–T2(150)
+                    T1(450)–Mix(50)
+                    T1(250)–T2(250)
+                    T1(400)–T2(100)
+                   T1(250)–Mix(250)
+                    T1(300)–T2(200)
+                           T1(500)
+
+                    Qwen 3.6 (base)
+                           GLM-5.2
+
+
+
+       Zero-shot
+                     Claude Opus 5
+                            GPT-5.5
+                    Claude Opus 4.8
+                        GPT-5.6 Sol
+                                        −10       −5        0         5       10         −10      −5         0        5        10
+                                Relative BA improvement (kcal/mol)
+Figure A8. Relative binding affinity improvement for all trained models and frontier models using the T1(500) model as the
+baseline, where higher is better. The left panel is over the n = 14 anionic starting ligands and the right is over the n = 26 neutral
+starting ligands. All error bars are ±1 SE in the average relative binding affinity improvement with the T1(500) baseline over the
+respective subset of the test set.
+
+
+
+
+                                                                 29
+

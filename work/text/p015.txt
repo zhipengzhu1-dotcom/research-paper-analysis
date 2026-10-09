@@ -1,0 +1,50 @@
+   Yuxing Peng, Prabindh Sundareson, Mehmet Akdel, Gabriele Corso, Hannes Stärk, Zachary Carpenter, Michael
+   Bronstein, Emine Kucukbenli, Torsten Schwede, and Luca Naef (July 2024). PLINDER: The protein-ligand
+   interactions dataset and evaluation resource. DOI: 10.1101/2024.07.17.603955.
+Elman, Jeffrey L. (July 1993). “Learning and development in neural networks: the importance of starting small”. In:
+   Cognition 48.1, pp. 71–99. DOI: 10.1016/0010-0277(93)90058-4.
+Fallahpour, Adibvafa et al. (Mar. 2026). BioReason-Pro: Advancing Protein Function Prediction with Multimodal
+    Biological Reasoning. DOI: 10.64898/2026.03.19.712954.
+Fang, Yin, Xiaozhuan Liang, Ningyu Zhang, Kangwei Liu, Rui Huang, Zhuo Chen, Xiaohui Fan, and Huajun Chen
+   (Mar. 2024). Mol-Instructions: A Large-Scale Biomolecular Instruction Dataset for Large Language Models. DOI:
+   10.48550/arXiv.2306.08018.
+Friesner, Richard A., Jay L. Banks, Robert B. Murphy, Thomas A. Halgren, Jasna J. Klicic, Daniel T. Mainz, Matthew P.
+    Repasky, Eric H. Knoll, Mee Shelley, Jason K. Perry, David E. Shaw, Perry Francis, and Peter S. Shenkin (Feb.
+    2004). “Glide: A New Approach for Rapid, Accurate Docking and Scoring. 1. Method and Assessment of Docking
+    Accuracy”. In: Journal of Medicinal Chemistry 47.7, pp. 1739–1749. DOI: 10.1021/jm0306430.
+Gleeson, M. Paul (Jan. 2008). “Generation of a Set of Simple, Interpretable ADMET Rules of Thumb”. In: Journal of
+   Medicinal Chemistry 51.4, pp. 817–834. DOI: 10.1021/jm701122q.
+GLM-5-Team et al. (Feb. 2026). GLM-5: from Vibe Coding to Agentic Engineering. DOI: 10.48550/arXiv.2602.
+  15763.
+Goldie, Anna, Azalia Mirhoseini, Hao Zhou, Irene Cai, and Christopher D. Manning (Apr. 2025). Synthetic Data
+   Generation & Multi-Step RL for Reasoning & Tool Use. DOI: 10.48550/arXiv.2504.04736.
+Guan, Xinyu, Li Lyna Zhang, Yifei Liu, Ning Shang, Youran Sun, Yi Zhu, Fan Yang, and Mao Yang (Jan. 2025). rStar-
+   Math: Small LLMs Can Master Math Reasoning with Self-Evolved Deep Thinking. DOI: 10.48550/arXiv.2501.
+   04519.
+Guo, Yiduo, Zhen Guo, Chuanwei Huang, Zi-Ang Wang, Zekai Zhang, Haofei Yu, Huishuai Zhang, and Yikang Shen
+   (May 2025). Synthetic Data RL: Task Definition Is All You Need. DOI: 10.48550/arXiv.2505.17063.
+Hacohen, Guy and Daphna Weinshall (May 2019). On The Power of Curriculum Learning in Training Deep Networks.
+   DOI : 10.48550/arXiv.1904.03626.
+
+Han, Kevin, Renfei Zhang, Kathy Wei, Hamed Mahdavi, Niloofar Mireshghallah, and Amir Farimani (2026). SMDD-
+   Bench: Can LLMs Solve Real-World Small Molecule Drug Design Tasks? DOI: 10.48550/ARXIV.2605.21740.
+Heid, Esther, Kevin P. Greenman, Yunsie Chung, Shih-Cheng Li, David E. Graff, Florence H. Vermeire, Haoyang Wu,
+   William H. Green, and Charles J. McGill (Dec. 2023). “Chemprop: A Machine Learning Package for Chemical
+   Property Prediction”. In: Journal of Chemical Information and Modeling 64.1, pp. 9–17. DOI: 10.1021/acs.
+   jcim.3c01250.
+Ibarraran, Sebastian, Shriram Chennakesavalu, Frank Hu, and Grant M. Rotskoff (Feb. 2026). Efficient, Few-shot
+   Directed Evolution with Energy Rank Alignment. DOI: 10.64898/2026.02.03.703561.
+Istrate, Ana-Maria, Fausto Milletari, Fabrizio Castrotorres, Jakub M. Tomczak, Michaela Torkar, Donghui Li, and
+    Theofanis Karaletsos (Aug. 2025). rbio1 - training scientific reasoning LLMs with biological world models as soft
+    verifiers. DOI: 10.1101/2025.08.18.670981.
+Ivison, Hamish, Junjie Oscar Yin, Rulin Shao, Teng Xiao, Nathan Lambert, and Hannaneh Hajishirzi (June 2026).
+    Tmax: A simple recipe for terminal agents. DOI: 10.48550/arXiv.2606.23321.
+Kaplan, Jared, Sam McCandlish, Tom Henighan, Tom B. Brown, Benjamin Chess, Rewon Child, Scott Gray, Alec
+   Radford, Jeffrey Wu, and Dario Amodei (Jan. 2020). Scaling Laws for Neural Language Models. DOI: 10.48550/
+   arXiv.2001.08361.
+
+
+
+
+                                                         15
+

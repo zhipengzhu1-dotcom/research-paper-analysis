@@ -1,0 +1,61 @@
+   Table A4. The 116 molecular properties presented to the model in the Tier-1 molecular-optimization environment (as op-
+   timization targets and constraints), grouped by family: 101 computed with RDKit and 15 with OpenEye. Property names
+   are the identifiers shown in the prompt. Most are scalar targets; scaffold is a BRICS-substructure constraint (a string) and
+   oe_is_macrocycle is a boolean flag.
+Group              Property                                      Description
+Size / physico.    molecular_weight                              Average molecular weight in Daltons (Da)
+                   exact_molecular_weight                        Monoisotopic (exact) molecular weight in Da
+                   heavy_atom_molecular_weight                   Average molecular weight ignoring hydrogens
+                   heavy_atom_count                              Number of heavy (non-hydrogen) atoms
+                   num_heteroatoms                               Number of heteroatoms (non-carbon atoms)
+                   tpsa                                          Topological polar surface area in Å2
+                   logp                                          Octanol/water partition coefficient (Crippen LogP)
+                   molar_refractivity                            Crippen molar refractivity
+                   labute_asa                                    Labute approximate accessible surface area in Å2
+                   qed                                           Quantitative estimate of drug-likeness (QED) score
+                   qed_alerts                                    Number of QED structural alerts matched
+                   fraction_csp3                                 Fraction of carbons that are sp3 -hybridized
+H-bond / charge    hbd                                           Number of hydrogen bond donors (Lipinski definition)
+                   num_h_acceptors                               Number of hydrogen bond acceptors
+                   num_lipinski_h_donors                         Hydrogen bond donors, Lipinski N–H + O–H definition
+                   num_lipinski_h_acceptors                      Hydrogen bond acceptors, Lipinski all-N + O definition
+                   nhoh_count                                    Number of implicit hydrogens attached to N and O atoms
+                   nocount                                       Number of nitrogen and oxygen atoms
+                   formal_charge                                 Net formal charge of the molecule
+                   num_valence_electrons                         Number of valence electrons
+                   num_radical_electrons                         Number of radical electrons
+                   max_partial_charge                            Maximum Gasteiger partial charge over all atoms
+                   min_partial_charge                            Minimum Gasteiger partial charge over all atoms
+                   max_estate_index                              Maximum electrotopological-state (E-state) index
+                   min_estate_index                              Minimum electrotopological-state (E-state) index
+Bond / stereo      num_bonds                                     Total number of bonds
+                   num_rotatable_bonds                           Number of rotatable bonds
+                   num_amide_bonds                               Number of amide bonds
+                   num_brics_bonds                               Number of BRICS-cleavable bonds
+                   scaffold                                      Random BRICS-derived scaffold substructure (used as a structural
+                                                                 constraint)
+                   num_fragments                                 Number of disconnected fragments (components)
+                   num_tautomers                                 Number of tautomers enumerated by RDKit
+                   num_atom_stereo_centers                       Number of atom stereocenters
+                   num_unspecified_atom_stereo_centers           Number of atom stereocenters with unassigned configuration
+                   num_stereoisomers                             Number of stereoisomers implied by unspecified stereocenters
+Atom counts        atom_count_C                                  Number of carbon (C) atoms
+                   atom_count_H                                  Number of hydrogen (H) atoms (implicit + explicit)
+                   atom_count_N                                  Number of nitrogen (N) atoms
+                   atom_count_O                                  Number of oxygen (O) atoms
+                   atom_count_S                                  Number of sulfur (S) atoms
+                   atom_count_F                                  Number of fluorine (F) atoms
+                   atom_count_Cl                                 Number of chlorine (Cl) atoms
+                   atom_count_Br                                 Number of bromine (Br) atoms
+                   atom_count_P                                  Number of phosphorus (P) atoms
+                   atom_count_I                                  Number of iodine (I) atoms
+                   num_leadopt_disallowed_atoms                  Number of atoms whose element is disallowed for lead optimiza-
+                                                                 tion
+Ring counts        ring_count                                    Total number of rings
+                   num_aromatic_rings                            Number of aromatic rings
+                                                                                                             continued on next page
+
+
+
+                                                            32
+

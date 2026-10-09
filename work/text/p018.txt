@@ -1,0 +1,50 @@
+RDKit (2026). RDKit: Open-source cheminformatics. URL: https://www.rdkit.org/ (visited on 08/21/2026).
+Ross, Gregory A., Chao Lu, Guido Scarabelli, Steven K. Albanese, Evelyne Houang, Robert Abel, Edward D. Harder,
+   and Lingle Wang (Oct. 2023). “The maximal and current accuracy of rigorous protein-ligand binding free energy
+   calculations”. In: Communications Chemistry 6.1, p. 222. DOI: 10.1038/s42004-023-01019-9.
+Sadybekov, Anastasiia V. and Vsevolod Katritch (Apr. 2023). “Computational approaches streamlining drug discov-
+   ery”. In: Nature 616.7958, pp. 673–685. DOI: 10.1038/s41586-023-05905-z.
+Sancaktar, Cansu, David Zhang, Gabriel Synnaeve, and Taco Cohen (Mar. 2026). A Deep Dive into Scaling RL for
+   Code Generation with Synthetic Data and Curricula. DOI: 10.48550/arXiv.2603.24202.
+Schulman, John, Filip Wolski, Prafulla Dhariwal, Alec Radford, and Oleg Klimov (Aug. 2017). Proximal Policy
+   Optimization Algorithms. DOI: 10.48550/arXiv.1707.06347.
+Shao, Zhihong, Peiyi Wang, Qihao Zhu, Runxin Xu, Junxiao Song, Xiao Bi, Haowei Zhang, Mingchuan Zhang, Y. K.
+   Li, Y. Wu, and Daya Guo (Apr. 2024). DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open
+   Language Models. DOI: 10.48550/arXiv.2402.03300.
+Shoichet, Brian K. (Dec. 2004). “Virtual screening of chemical libraries”. In: Nature 432.7019, pp. 862–865. DOI:
+   10.1038/nature03197.
+Sutton, Richard S, David McAllester, Satinder Singh, and Yishay Mansour (1999). “Policy Gradient Methods for
+   Reinforcement Learning with Function Approximation”. In: Advances in Neural Information Processing Systems.
+   Vol. 12. MIT Press. URL: https://papers.nips.cc/paper_files/paper/1999/hash/464d828b85b0bed98
+   e80ade0a5c43b0f-Abstract.html (visited on 08/23/2026).
+Thölke, Philipp and Gianni De Fabritiis (Apr. 2022). TorchMD-NET: Equivariant Transformers for Neural Network
+   based Molecular Potentials. DOI: 10.48550/arXiv.2202.02541.
+Tingle, Benjamin I., Khanh G. Tang, Mar Castanon, John J. Gutierrez, Munkhzul Khurelbaatar, Chinzorig Dandarchu-
+   luun, Yurii S. Moroz, and John J. Irwin (Feb. 2023). “ZINC-22-A Free Multi-Billion-Scale Database of Tangible
+   Compounds for Ligand Discovery”. In: Journal of Chemical Information and Modeling 63.4, pp. 1166–1176. DOI:
+   10.1021/acs.jcim.2c01253.
+Trott, Oleg and Arthur J. Olson (2010). “AutoDock Vina: Improving the speed and accuracy of docking with a new
+   scoring function, efficient optimization, and multithreading”. In: Journal of Computational Chemistry 31.2,
+   pp. 455–461. DOI: 10.1002/jcc.21334.
+Walters, W. Patrick, Matthew T Stahl, and Mark A Murcko (Apr. 1998). “Virtual screening—an overview”. In: Drug
+   Discovery Today 3.4, pp. 160–178. DOI: 10.1016/S1359-6446(97)01163-X.
+Wang, Lingle, Yujie Wu, Yuqing Deng, Byungchan Kim, Levi Pierce, Goran Krilov, Dmitry Lupyan, Shaughnessy
+  Robinson, Markus K. Dahlgren, Jeremy Greenwood, Donna L. Romero, Craig Masse, Jennifer L. Knight, Thomas
+  Steinbrecher, Thijs Beuming, Wolfgang Damm, Ed Harder, Woody Sherman, Mark Brewer, Ron Wester, Mark
+  Murcko, Leah Frye, Ramy Farid, Teng Lin, David L. Mobley, William L. Jorgensen, Bruce J. Berne, Richard A.
+  Friesner, and Robert Abel (Jan. 2015). “Accurate and Reliable Prediction of Relative Ligand Binding Potency in
+  Prospective Drug Discovery by Way of a Modern Free-Energy Calculation Protocol and Force Field”. In: Journal
+  of the American Chemical Society 137.7, pp. 2695–2703. DOI: 10.1021/ja512751q.
+Wei, Jason, Maarten Bosma, Vincent Y. Zhao, Kelvin Guu, Adams Wei Yu, Brian Lester, Nan Du, Andrew M. Dai, and
+   Quoc V. Le (Feb. 2022). Finetuned Language Models Are Zero-Shot Learners. DOI: 10.48550/arXiv.2109.01652.
+Wei, Jason, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, Brian Ichter, Fei Xia, Ed Chi, Quoc Le, and Denny Zhou
+   (Jan. 2023). Chain-of-Thought Prompting Elicits Reasoning in Large Language Models. DOI: 10.48550/arXiv.
+   2201.11903.
+Weiss, Karl, Taghi M. Khoshgoftaar, and DingDing Wang (May 2016). “A survey of transfer learning”. In: Journal of
+   Big Data 3.1, p. 9. DOI: 10.1186/s40537-016-0043-6.
+Widatalla, Talal, Rafael Rafailov, and Brian Hie (May 2024). Aligning protein generative models with experimental
+   fitness via Direct Preference Optimization. DOI: 10.1101/2024.05.20.595026.
+
+
+                                                       18
+

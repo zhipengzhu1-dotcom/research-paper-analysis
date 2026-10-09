@@ -1,0 +1,65 @@
+                                      Reasoning                 Non-reasoning output
+
+
+             T1(250)–Mix(250)                                                   16k / 0.7k
+              T1(250)–T2(250)                                                   17k / 1.0k
+             T1(300)–Mix(200)                                                  14k / 1.0k
+              T1(300)–T2(200)                                                 12k / 0.6k
+             T1(350)–Mix(150)                                                    19k / 1.6k
+              T1(350)–T2(150)                                                 12k / 1.2k
+             T1(400)–Mix(100)                                                  15k / 0.9k
+              T1(400)–T2(100)                                           7k / 0.6k
+              T1(450)–Mix(50)                                                  15k / 1.0k
+               T1(450)–T2(50)                                                   17k / 1.2k
+                       T1(500)                                                  17k / 1.0k
+                                                                                     32k / 0.8k
+                                              ∼
+              Qwen 3.6 (base)
+                                                  / 0.5k
+                                              ∼
+                   GPT-5.6 Sol
+                                                  / 0.5k
+                                                           ∼
+                        GPT-5.5
+                                                               / 1.2k
+                                                                          ∼
+                Claude Opus 5
+              Claude Opus 4.8                                                   / 9.0k
+                       GLM-5.2                                                                     160k / 5.7k
+
+
+                                  0                 1k                  10k                 100k
+                                                     Characters per rollout
+Figure A6. The average number of characters each model emitted across all n = 200 rollouts, split into reasoning (chain of
+thought) and non-reasoning output (visible messages). For closed-source frontier models the reasoning text is unavailable,
+shown as a tilde (∼) rather than zero, so only non-reasoning output is counted.
+
+
+
+feedback from SQM tool calls with non-SQM tool calls occurring less frequently and influencing the overall design
+campaign less. We also see that the weaker Qwen 3.6 (base) model does not fully utilize its SQM scoring budget with
+an average number of SQM turns of only 3.2 and that stronger frontier models call SQM more frequently but still
+less than trained models (see Table 2). Interestingly, each stage of the curriculum training induces the model to call
+SQM closer to the first turn of the optimization episode, with a clear decreasing progression in the average turn for
+the first call from Qwen 3.6 (base) to T1(500) to the curriculum-trained models as shown in Figure A7.
+
+
+C.5 Chemical analysis of designs
+Lastly, we analyze both how the chemistry of the seed molecule influences model behavior and the chemical design
+principles that the models leverage when carrying out optimization. In Figure A8, we look at the performance of the
+trained and frontier models on anionic and neutral seed molecules. When the seed molecule carries an anionic
+group, curriculum-trained models outperform other models by the largest margin. For neutrally charged seed
+molecules, the relative differences are much more muted, with the curriculum-trained models performing similarly
+to frontier models.
+    Across all anionic modifications in all model rollouts, on average, removing an anionic group improved the
+relative binding affinity by 26.1 kcal/mol, with larger values indicating stronger predicted binding. In Figure A9, we
+plot the percentage of scored candidates that remove an anionic group and find that the curriculum-trained models
+overwhelmingly favor removing these groups from candidates.
+    Finally, we investigate the chemical diversity of the designs submitted in Figure A10, where for each model, we
+compute the fraction of unique molecules averaged over all systems where all five rollouts were successful. We see
+that all of our trained models have comparable generative diversity to the frontier models. Notably, training with
+the Tier-2 tasks seems to reduce the generative diversity slightly, with T1(500) having the highest diversity compared
+
+
+                                                           27
+

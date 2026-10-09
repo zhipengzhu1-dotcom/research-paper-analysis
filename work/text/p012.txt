@@ -1,0 +1,75 @@
+                 T1(250)–Mix(250)                                                                    20
+
+
+
+
+                                                                                                         Net % of rollouts (added − removed)
+                  T1(250)–T2(250)
+                 T1(300)–Mix(200)                                                                    15
+                  T1(300)–T2(200)
+                 T1(350)–Mix(150)                 +10         +10                                    10
+                  T1(350)–T2(150)
+                 T1(400)–Mix(100)                                                                    5
+                  T1(400)–T2(100)                             +13
+                  T1(450)–Mix(50)                                                                    0
+                   T1(450)–T2(50)                 +12
+                          T1(500)                                                                    −5
+                  Qwen 3.6 (base)                       +12
+                       GPT-5.6 Sol +11 +11        +15         +11                                    −10
+                          GPT-5.5      +17        +13
+                    Claude Opus 5      +11        +19                            +12                 −15
+                  Claude Opus 4.8 +12                         +16
+                         GLM-5.2 +14              +15 +12 +13                                        −20
+                                al i ph CF     Cl
+                                               BrF
+                                        at i 3
+                                            cO
+                                         ph Hen o
+                                             NH l
+                                su amlfo id
+                                        na emiNH 2
+                                       be e
+                                          n    d
+                                            eth e
+                                               e
+                                            OM r
+                                       py zene
+                                    ph OOCrid
+                                        osp − ine
+                                             ha te
+Figure 7. The difference between the percentage of rollouts that added a functional group and the percentage of rollouts that
+removed a functional group for each model. Percentages are computed only over rollouts that terminated in a final valid and
+scorable design. Numbers are only shown in the heatmap for differences of magnitude ≥ 10%.
+
+
+
+In addition to being less likely to add halogens, the trained models are more aggressive than frontier models in
+removing anionic groups (see Figures A8 and A9). Beyond halogens and anionic groups, we see that our trained
+models broadly agree with the frontier models both on which of the other groups (e.g., methoxy, pyridine, aliphatic
+OH) to modify and whether to add or remove these groups. Further chemical analysis is included in Appendix C.5.
+
+
+7 Conclusion
+In this work, we investigate improving the design capabilities of LLMs for high-fidelity and high-cost chemical
+properties. Specifically, we design a large number of synthetic design tasks and explore how various training recipes
+that leverage these synthetic tasks can improve performance. We find that the best performing recipes enable the
+model to efficiently design molecules and demonstrate capabilities that exceed larger and far more capable frontier
+models. While we only focused on in silico properties in this work, the strategies we employed can also be used
+in experimental contexts, where training on high-throughput and low-fidelity experimental tasks can potentially
+generalize to low-throughput and high-fidelity experimental tasks. The training recipes here ultimately serve as a
+foundation for enabling better small-molecule design capabilities in LLMs. Deploying LLMs to run full drug design
+campaigns will no doubt require richer training recipes and the incorporation of other training approaches (e.g.,
+supervised finetuning, on-policy distillation) that can ultimately teach the model how to make more robust and
+sensible chemical designs. We leave exploration of those topics to future work.
+
+
+Author contributions
+F.H. and S.C. conceived of and designed the study. F.H. ran experiments and carried out data analysis. S.C. was the
+sole research supervisor. F.H. and S.C. wrote the manuscript. B.V., K.S., and P.S. designed the structural textification
+approach. P.S. carried out chemical analysis of model designs. K.S. deployed SQM on internal hardware. Z.W. and S.C.
+set up the internal prime-rl-based framework for building RL environments and carrying out large-scale training
+on internal hardware. C.G. supervised the internal legal review process. All authors reviewed the manuscript.
+
+
+                                                                    12
+

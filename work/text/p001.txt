@@ -1,0 +1,57 @@
+                                        Training Large Language Models for Small-Molecule Design with
+                                                            Synthetic Task Scaling
+                                                  Frank Hu,* Shriram Chennakesavalu,* Zichen Wang, Patricia Suriana, Bodhi Vani,
+                                                                Kirill Shmilovich, Kangway Chuang, Colin Grambow
+                                                                            Prescient Design, Genentech, South San Francisco, CA, USA
+
+                                                                                              September 7, 2026
+
+
+
+
+arXiv:2609.04735v1 [cs.LG] 4 Sep 2026
+                                                                                                     Abstract
+                                              Designing viable drug candidates requires searching a combinatorially large and rugged chemical space for
+                                              molecules that satisfy multiple, often competing, objectives. Large language models (LLMs) provide a useful
+                                              generative prior for this problem because of their representational capacity, reasoning ability, and flexibility when
+                                              incorporating information from the external environment. While reinforcement learning from verifiable rewards
+                                              (RLVR) can be used to improve the capabilities of LLMs, many chemically relevant scoring functions require hours
+                                              or even days per evaluation, making them prohibitively expensive to use directly during online training. Here, we
+                                              investigate whether LLMs can learn molecular design strategies from cheaper synthetic tasks that generalize to
+                                              expensive molecular lead optimization settings. We find that curriculum-based training recipes that gradually
+                                              incorporate more challenging synthetic design tasks enable strong performance that surpasses that of much larger
+                                              frontier models on structure-based lead optimization. Our results suggest that scaling post-training using synthetic
+                                              tasks is an effective strategy for adapting LLMs to high-cost experimental scenarios that are too expensive to directly
+                                              train on.
+
+
+
+                                        1 Introduction
+                                        Designing molecules for drug discovery campaigns is a highly involved and complex process that involves searching
+                                        over a vast and rugged chemical space for molecules that satisfy a set of property objectives and constraints. For
+                                        many therapeutic modalities, these constraints often center around designing molecules with high affinity for a bio-
+                                        logical target and satisfying certain chemical and physiological profiles, including those related to pharmacokinetics,
+                                        developability, and toxicity (Lipinski, 2004; Gleeson, 2008; Bickerton et al., 2012).
+                                             Many conventional search workflows follow a generation, scoring, and filtering order, where generated molecules
+                                        are scored and filtered, resulting in a set of molecules with desired properties (Walters et al., 1998; Shoichet, 2004;
+                                        Kitchen et al., 2004; Sadybekov and Katritch, 2023). These workflows use a range of scoring in silico oracles with varying
+                                        cost and fidelity, ranging from cheap but low-fidelity docking oracles (Friesner et al., 2004; Trott and Olson, 2010; McGann,
+                                        2011; McGann, 2012) to high-fidelity but expensive free energy perturbation (FEP) calculations (L. Wang et al., 2015;
+                                        Ross et al., 2023; Qian et al., 2024). Given this cost of scoring and the often limited chemical space accessible to classic
+                                        molecular generators, many of these workflows often search small pockets of chemical space. Developing molecular
+                                        generators that can cheaply and robustly sample desired regions of chemical space is a longstanding challenge with
+                                        immense practical value.
+                                             Recently, large language models trained at scale have displayed remarkable representational capabilities, both
+                                        in terms of their stored information (Morris et al., 2025) and their ability to reason about this information (Cobbe
+                                        et al., 2021; Wei, X. Wang, et al., 2023; Yao et al., 2023; OpenAI, 2024; Zeng et al., 2025; Guan et al., 2025). Additionally, recent
+                                        developments in “post-training” methods have made it possible to control the outputs of these models, ensuring
+                                        that the model largely generates desired responses (Schulman et al., 2017; Rafailov et al., 2024; Shao et al., 2024; Lambert
+                                        et al., 2025). The combination of broad generative capacity and controllable generation via post-training makes
+                                        LLMs well-suited for molecular design, and recent efforts have begun to realize this potential using reinforcement
+                                          * These authors contributed equally to this work.
+                                           Correspondence to grambow.colin@gene.com
+
+
+
+                                                                                                         1
+

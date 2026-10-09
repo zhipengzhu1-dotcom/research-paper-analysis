@@ -1,0 +1,62 @@
+with the same calculate_multiple_properties tool, a score_sqm tool, and an additional contains_scaffold
+tool, which provides information on whether the molecule satisfies a scaffold constraint. The tool is provided to
+the model as a partial function with the required scaffold encapsulated within the tool. The only thing the model
+provides to the tool is a SMILES string, and the tool returns a text response indicating if the SMILES string contains
+the required scaffold or not. We only include this tool during evaluation as we found that including it during training
+hurts performance because models traded objective improvement and the satisfaction of other constraints for
+scaffold satisfaction, sometimes leading to mode collapse.
+    For all Tier-2 tasks, we use ligand–receptor pairs from the official PLINDER training split, while for all SQM
+evaluation tasks, we use ligand–receptor pairs from the official PLINDER test split, ensuring no data leakage between
+the training and evaluation. Our final Tier-2 training set includes 999 tasks, and the SQM evaluation includes 40
+evaluable tasks. For the full prompts for both Tier-1 and Tier-2 tasks, see Prompts 2 and 3.
+
+
+A.2 Structure-based scoring functions
+In this section, we provide additional details on POSIT docking, Chemgauss4, and SQM. Computing the Chemgauss4
+and SQM scores requires a three-dimensional structure of the ligand bound to the receptor. For both scoring
+functions, we first use POSIT for template-based docking, using the crystallographic pose of the starting ligand as
+the template for placing each proposed molecule in the binding pocket. The runtime of a single POSIT docking run
+is negligible, enabling high-throughput pose prediction that then feeds into both scoring functions.
+    The Chemgauss4 scoring function (McGann, 2011; McGann, 2012) uses Gaussian smoothed potentials to measure
+the complementarity of ligand poses within the binding site. The score includes terms for shape complementarity,
+protein–ligand hydrogen bonding, hydrogen bonding with implicit solvent, and metal–chelator interactions. For
+hydrogen bonding interactions specifically, Chemgauss4 evaluates deviations from the ideal donor–acceptor
+geometry for both the donor and acceptor atoms and combines these contributions into the hydrogen bonding
+term. The score is unitless, with more negative values indicating stronger predicted binding.
+    The SQM score (Pecina et al., 2024) is computed as
+
+                                   SQM = ∆E int + ∆∆G solv + ∆G conf (L) + ∆G H + − T ∆S,                            (A1)
+
+where ∆E int is the gas-phase interaction energy, ∆∆G solv is the change of the solvation free energy upon complex
+formation, ∆G conf (L) is the change of conformational free energy of the ligand in an aqueous environment, ∆G H + is
+the free energy of proton transfer between the ligand and the buffer, and −T ∆S is the loss in ligand conformational
+entropy upon binding. All of the terms in Equation A1 have units of kcal/mol, and the SQM score can be treated as a
+proxy for the binding affinity, where a lower, more negative value indicates a stronger predicted binding affinity.
+    For a single docked pose, a single Chemgauss4 scoring run takes on the order of seconds, while computing
+the SQM score takes on the order of tens of minutes due to the expensive semiempirical quantum mechanics
+calculations required to estimate each of the terms in Equation A1. As a result, we define the Tier-2 tasks to use the
+cheaper Chemgauss4 scoring and use the SQM scoring exclusively during evaluation.
+
+
+A.3 Reward definitions
+For all training and evaluation tasks, we use the same general form of the reward function introduced in Equation 11,
+reprinted below for convenience.
+
+                          R total = w obj r obj + w constraint r constraint + n tool r tool + r format + r invalid
+
+The objective reward r obj measures the extent to which the target property has been optimized and is defined as
+
+                                                                         ∆y 2
+                                                             µ       · µ    ¶ ¸¶
+                                              r obj = sgn(∆y) 1 − exp −k                                             (A2)
+                                                                          τ
+
+Here, k is a scaling factor, τ is a positive normalization scale for the improvement, sgn(·) is the sign function, and ∆y
+is the signed improvement                         (
+                                                    ŷ − y ref , for maximization,
+                                             ∆y =                                                                     (A3)
+                                                    y ref − ŷ, for minimization,
+
+
+                                                                    21
+

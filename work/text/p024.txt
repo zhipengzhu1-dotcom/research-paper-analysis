@@ -1,0 +1,82 @@
+  tasks are too difficult for the Qwen 3.6 (base) model to learn directly using RL and emphasizes the need for instilling
+  in the model a better understanding of fundamental chemistry and molecular design principles.
+
+
+  C.2 Reward hyperparameter screens
+
+                  w = 0.75, wconstraint = 0.25
+               1.0 obj
+                                                               wobj = 0.50, wconstraint = 0.50 wobj = 0.25, wconstraint = 0.75
+               0.8
+
+
+
+Mean reward
+               0.6                                                                                                                                                                                             Rtotal
+               0.4                                                                                                                                                                                             robj
+               0.2                                                                                                                                                                                             rconstraint
+               0.0
+                          420    440     460     480     500       420       440   460    480                        500                            420       440    460         480         500
+                                                                     Training step
+  Figure A2. T1(400)–T2(100) reward decomposition for the curriculum-trained arm hot-started at step 400 (docking-only
+  second stage), under three objective/constraint reward weightings. Each panel shows the total reward (R total ) together with the
+  unweighted binding and constraint subrewards (r obj and r constraint ); the total is the weighted combination of these subrewards
+  plus the tool/format penalties, so the r obj and r constraint curves do not sum directly to R total . Curves span the docking-stage
+  steps 401–500.
+
+      We also explore various reward hyperparameters for Tier-2 tasks during the second stage of curriculum training.
+  In Figure A2, we plot the Tier-2 total reward and its subrewards (r obj and r constraint ) for the T1(400)–T2(100) model
+  training. With the curriculum approach, the binding reward (r obj ) improves significantly compared to the runs
+  that were exclusively trained on Tier-2 tasks (see Figure A1). Additionally, we see that the training dynamics are
+  relatively insensitive to reward hyperparameters, with both r obj and r constraint achieving similar values with only
+  their weighted sum differing across the different runs.
+
+                       T1(450)–T2(50)                                                                                                    2.5                                     T1(250)–Mix(250) T1(300)–T2(200)
+
+
+
+
+                                                                                                    Relative BA improvement (kcal/mol)
+                     T1(350)–Mix(150)                                                                                                                                  T1(400)–Mix(100)
+                      T1(400)–T2(100)
+                      T1(350)–T2(150)                                                                                                    2.0
+   Trained
+                                                                                                                                                          T1(450)–Mix(50)
+                      T1(250)–T2(250)
+                     T1(300)–Mix(200)                                                                                                                                                                         T1(250)–T2(250)
+                     T1(250)–Mix(250)                                                                                                    1.5
+                      T1(300)–T2(200)                                                                                                                                T1(400)–T2(100)
+                                                                                                                                                                                                             GPT-5.6 Sol
+
+                      T1(450)–Mix(50)                                                                                                                                                              T1(350)–Mix(150)
+                     T1(400)–Mix(100)                                                                                                    1.0
+                             T1(500)
+                      Qwen 3.6 (base)
+
+
+   Zero-shot
+                             GLM-5.2                                                                                                     0.5                        T1(350)–T2(150) T1(300)–Mix(200)
+                        Claude Opus 5                                                                                                                                                                   Claude Opus 4.8
+                              GPT-5.5
+                      Claude Opus 4.8                                                                                                    0.0        T1(500)                 T1(450)–T2(50)
+                           GPT-5.6 Sol
+                                         −4         −2         0         2         4            6                                              70         72           74              76            78           80
+                                               Relative BA improvement (kcal/mol)                                                                             Training wall time (hours)
+  Figure A3. Curriculum-trained models with w obj = w constraint = 0.5. The data presentation here is consistent with Figure 3, and
+  higher relative binding affinity improvement is better.
+
+
+      In Figures 3, A3, and A4, we plot the aggregate performance of these three different reward configurations across
+  various training recipes. Interestingly, despite similar reward dynamics, there is a noticeable effect of changing
+  the reward hyperparameters in the SQM evaluation task. We see by comparing the left panel of the three figures
+  that training with the alternative reward weightings leads to worse performance for the curriculum-trained models
+  compared to the w obj = 0.75, w constraint = 0.25 condition used in the main text, with none of the alternatively trained
+  models exceeding a relative binding affinity improvement of 2.5 kcal/mol relative to T1(500). Additionally, we see
+  that the T1(a)–Mix(b) models more frequently beat the T1(a)–T2(b) models in terms of performance under these
+  different weight settings compared to what is shown in Figure 3.
+
+
+
+
+                                                                                         24
+

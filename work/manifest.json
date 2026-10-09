@@ -1,0 +1,154 @@
+{
+ "pdf": "2609.04735v1.pdf",
+ "pages": 37,
+ "per_page": {
+  "1": {
+   "lines": 57,
+   "nonblank": 45
+  },
+  "2": {
+   "lines": 57,
+   "nonblank": 51
+  },
+  "3": {
+   "lines": 130,
+   "nonblank": 97
+  },
+  "4": {
+   "lines": 64,
+   "nonblank": 52
+  },
+  "5": {
+   "lines": 66,
+   "nonblank": 57
+  },
+  "6": {
+   "lines": 58,
+   "nonblank": 51
+  },
+  "7": {
+   "lines": 59,
+   "nonblank": 49
+  },
+  "8": {
+   "lines": 83,
+   "nonblank": 60
+  },
+  "9": {
+   "lines": 59,
+   "nonblank": 53
+  },
+  "10": {
+   "lines": 75,
+   "nonblank": 58
+  },
+  "11": {
+   "lines": 69,
+   "nonblank": 36
+  },
+  "12": {
+   "lines": 75,
+   "nonblank": 61
+  },
+  "13": {
+   "lines": 9,
+   "nonblank": 4
+  },
+  "14": {
+   "lines": 49,
+   "nonblank": 46
+  },
+  "15": {
+   "lines": 50,
+   "nonblank": 44
+  },
+  "16": {
+   "lines": 55,
+   "nonblank": 45
+  },
+  "17": {
+   "lines": 50,
+   "nonblank": 46
+  },
+  "18": {
+   "lines": 50,
+   "nonblank": 47
+  },
+  "19": {
+   "lines": 22,
+   "nonblank": 17
+  },
+  "20": {
+   "lines": 58,
+   "nonblank": 51
+  },
+  "21": {
+   "lines": 62,
+   "nonblank": 49
+  },
+  "22": {
+   "lines": 66,
+   "nonblank": 57
+  },
+  "23": {
+   "lines": 60,
+   "nonblank": 46
+  },
+  "24": {
+   "lines": 82,
+   "nonblank": 60
+  },
+  "25": {
+   "lines": 83,
+   "nonblank": 57
+  },
+  "26": {
+   "lines": 61,
+   "nonblank": 52
+  },
+  "27": {
+   "lines": 65,
+   "nonblank": 53
+  },
+  "28": {
+   "lines": 32,
+   "nonblank": 17
+  },
+  "29": {
+   "lines": 38,
+   "nonblank": 27
+  },
+  "30": {
+   "lines": 27,
+   "nonblank": 22
+  },
+  "31": {
+   "lines": 31,
+   "nonblank": 22
+  },
+  "32": {
+   "lines": 61,
+   "nonblank": 57
+  },
+  "33": {
+   "lines": 61,
+   "nonblank": 58
+  },
+  "34": {
+   "lines": 65,
+   "nonblank": 48
+  },
+  "35": {
+   "lines": 62,
+   "nonblank": 45
+  },
+  "36": {
+   "lines": 64,
+   "nonblank": 47
+  },
+  "37": {
+   "lines": 63,
+   "nonblank": 52
+  }
+ }
+}

@@ -1,0 +1,50 @@
+Morris, John X., Chawin Sitawarin, Chuan Guo, Narine Kokhlikyan, G. Edward Suh, Alexander M. Rush, Kamalika
+  Chaudhuri, and Saeed Mahloujifar (June 2025). How much do language models memorize? DOI: 10.48550/
+  arXiv.2505.24832.
+Narayanan, Siddharth M., James D. Braza, Ryan-Rhys Griffiths, Albert Bou, Geemi Wellawatte, Mayk Caldas Ramos,
+   Ludovico Mitchener, Samuel G. Rodriques, and Andrew D. White (Dec. 2025). Training a Scientific Reasoning
+   Model for Chemistry. DOI: 10.48550/arXiv.2506.17238.
+Noukhovitch, Michael, Shengyi Huang, Sophie Xhonneux, Arian Hosseini, Rishabh Agarwal, and Aaron Courville
+  (Apr. 2025). Asynchronous RLHF: Faster and More Efficient Off-Policy RL for Language Models. DOI: 10.48550/
+  arXiv.2410.18252.
+NVIDIA et al. (Dec. 2025). NVIDIA Nemotron 3: Efficient and Open Intelligence. DOI: 10.48550/arXiv.2512.20856.
+OpenAI (Sept. 2024). Learning to reason with LLMs. URL: https://openai.com/index/learning-to-reason-
+  with-llms/ (visited on 09/02/2026).
+— (July 2026a). GPT-5.6: Frontier intelligence that scales with your ambition. URL: https://openai.com/index/
+  gpt-5-6/ (visited on 08/21/2026).
+— (Apr. 2026b). Introducing GPT-5.5. URL: https://openai.com/index/introducing-gpt-5-5/ (visited on
+  08/21/2026).
+OpenEye, Cadence Molecular Sciences (2025). OpenEye Toolkits. Santa Fe, NM. URL: https://www.eyesopen.com
+  (visited on 08/21/2026).
+Ouyang, Long, Jeff Wu, Xu Jiang, Diogo Almeida, Carroll L. Wainwright, Pamela Mishkin, Chong Zhang, Sandhini
+  Agarwal, Katarina Slama, Alex Ray, John Schulman, Jacob Hilton, Fraser Kelton, Luke Miller, Maddie Simens,
+  Amanda Askell, Peter Welinder, Paul Christiano, Jan Leike, and Ryan Lowe (Mar. 2022). Training language models
+  to follow instructions with human feedback. DOI: 10.48550/arXiv.2203.02155.
+Pan, Sinno Jialin and Qiang Yang (Oct. 2010). “A Survey on Transfer Learning”. In: IEEE Transactions on Knowledge
+   and Data Engineering 22.10, pp. 1345–1359. DOI: 10.1109/TKDE.2009.191.
+Parashar, Shubham, Shurui Gui, Xiner Li, Hongyi Ling, Sushil Vemuri, Blake Olson, Eric Li, Yu Zhang, James Caverlee,
+   Dileep Kalathil, and Shuiwang Ji (Mar. 2026). Curriculum Reinforcement Learning from Easy to Hard Tasks
+   Improves LLM Reasoning. DOI: 10.48550/arXiv.2506.06632.
+Pecina, Adam, Jindřich Fanfrlík, Martin Lepšík, and Jan Řezáč (Feb. 2024). “SQM2.20: Semiempirical quantum-
+   mechanical scoring function yields DFT-quality protein–ligand binding affinity predictions in minutes”. In:
+   Nature Communications 15.1, p. 1127. DOI: 10.1038/s41467-024-45431-8.
+Prime Intellect (2025). Prime Intellect. URL: https://github.com/PrimeIntellect-ai/prime-rl/ (visited on
+   08/21/2026).
+Qi, Penghui, Xiangxin Zhou, Zichen Liu, Tianyu Pang, Chao Du, Min Lin, and Wee Sun Lee (June 2026). Rethinking
+    the Trust Region in LLM Reinforcement Learning. DOI: 10.48550/arXiv.2602.04879.
+Qian, Runtong, Jing Xue, You Xu, and Jing Huang (Oct. 2024). “Alchemical Transformations and Beyond: Recent
+   Advances and Real-World Applications of Free Energy Calculations in Drug Discovery”. In: Journal of Chemical
+   Information and Modeling 64.19, pp. 7214–7237. DOI: 10.1021/acs.jcim.4c01024.
+Qiu, Chenhao, Qianglong Chen, Jintang Li, Caiyu Wang, Runsen Hua, Minghui Li, Shengshan Hu, and Yechao
+   Zhang (2025). WISDOM: Progressive Curriculum Synthesis Makes LLMs Better Mathematical Reasoner. URL:
+   https://openreview.net/forum?id=hFFAg5Dmw9.
+Qwen Team (Apr. 2026). Qwen3.6-35B-A3B: Agentic Coding Power, Now Open to All. URL: https://qwenlm.github.
+  io/blog/qwen3.6-35b-a3b/ (visited on 08/21/2026).
+Rafailov, Rafael, Archit Sharma, Eric Mitchell, Stefano Ermon, Christopher D. Manning, and Chelsea Finn (July 2024).
+   Direct Preference Optimization: Your Language Model is Secretly a Reward Model. DOI: 10.48550/arXiv.2305.
+   18290.
+
+
+
+                                                        17
+

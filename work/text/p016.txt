@@ -1,0 +1,55 @@
+Kelley, Brian P., Scott P. Brown, Gregory L. Warren, and Steven W. Muchmore (July 2015). “POSIT: Flexible Shape-
+    Guided Docking For Pose Prediction”. In: Journal of Chemical Information and Modeling 55.8, pp. 1771–1780.
+    DOI : 10.1021/acs.jcim.5b00142.
+
+Kim, Joongwon, Anirudh Goyal, Liang Tan, Hannaneh Hajishirzi, Srinivasan Iyer, and Tianlu Wang (July 2025).
+   ASTRO: Teaching Language Models to Reason by Reflecting and Backtracking In-Context. DOI: 10.48550/arXiv.
+   2507.00417.
+Kimi Team, Tongtong Bai, Yifan Bai, Yiping Bao, M. C, et al. (July 2026). Kimi K3: Open Frontier Intelligence. DOI:
+   10.48550/arXiv.2607.24653.
+Kimi Team, Tongtong Bai, Yifan Bai, Yiping Bao, S. H. Cai, et al. (Aug. 2026). Kimi K2.5: Visual Agentic Intelligence.
+   DOI : 10.48550/arXiv.2602.02276.
+
+Kitchen, Douglas B., Hélène Decornez, John R. Furr, and Jürgen Bajorath (Nov. 2004). “Docking and scoring in virtual
+    screening for drug discovery: methods and applications”. In: Nature Reviews Drug Discovery 3.11, pp. 935–949.
+    DOI : 10.1038/nrd1549.
+
+Krueger, Kai A. and Peter Dayan (Mar. 2009). “Flexible shaping: How learning in small steps helps”. In: Cognition
+   110.3, pp. 380–394. DOI: 10.1016/j.cognition.2008.11.014.
+Kumar, M., Benjamin Packer, and Daphne Koller (2010). “Self-Paced Learning for Latent Variable Models”. In:
+  Advances in Neural Information Processing Systems. Vol. 23. Curran Associates, Inc. URL: https://papers.
+   nips . cc / paper _ files / paper / 2010 / hash / e57c6b956a6521b28495f2886ca0977a - Abstract . html
+   (visited on 08/23/2026).
+Lambert, Nathan, Jacob Morrison, Valentina Pyatkin, Shengyi Huang, Hamish Ivison, Faeze Brahman, Lester James V.
+   Miranda, Alisa Liu, Nouha Dziri, Shane Lyu, Yuling Gu, Saumya Malik, Victoria Graf, Jena D. Hwang, Jiangjiang
+   Yang, Ronan Le Bras, Oyvind Tafjord, Chris Wilhelm, Luca Soldaini, Noah A. Smith, Yizhong Wang, Pradeep
+   Dasigi, and Hannaneh Hajishirzi (Apr. 2025). Tulu 3: Pushing Frontiers in Open Language Model Post-Training.
+   DOI : 10.48550/arXiv.2411.15124.
+
+Le, Hung, Yue Wang, Akhilesh Deepak Gotmare, Silvio Savarese, and Steven C. H. Hoi (Nov. 2022). CodeRL: Mastering
+    Code Generation through Pretrained Models and Deep Reinforcement Learning. DOI: 10.48550/arXiv.2207.
+    01780.
+Liang, Xiao, Zhong-Zhi Li, Yeyun Gong, Yang Wang, Hengyuan Zhang, Yelong Shen, Ying Nian Wu, and Weizhu Chen
+   (June 2025). SwS: Self-aware Weakness-driven Problem Synthesis in Reinforcement Learning for LLM Reasoning.
+   DOI : 10.48550/arXiv.2506.08989.
+
+Lipinski, Christopher A. (Dec. 2004). “Lead- and drug-like compounds: the rule-of-five revolution”. In: Drug Discov-
+    ery Today: Technologies 1.4, pp. 337–341. DOI: 10.1016/j.ddtec.2004.11.007.
+Liu, Zichen, Changyu Chen, Wenjun Li, Penghui Qi, Tianyu Pang, Chao Du, Wee Sun Lee, and Min Lin (Oct. 2025).
+    Understanding R1-Zero-Like Training: A Critical Perspective. DOI: 10.48550/arXiv.2503.20783.
+Madani, Ali, Ben Krause, Eric R. Greene, Subu Subramanian, Benjamin P. Mohr, James M. Holton, Jose Luis Olmos,
+  Caiming Xiong, Zachary Z. Sun, Richard Socher, James S. Fraser, and Nikhil Naik (Aug. 2023). “Large language
+  models generate functional protein sequences across diverse families”. In: Nature Biotechnology 41.8, pp. 1099–
+  1106. DOI: 10.1038/s41587-022-01618-2.
+McGann, Mark (Feb. 2011). “FRED Pose Prediction and Virtual Screening Accuracy”. In: Journal of Chemical
+  Information and Modeling 51.3, pp. 578–596. DOI: 10.1021/ci100436p.
+— (Aug. 2012). “FRED and HYBRID docking performance on standardized datasets”. In: Journal of Computer-Aided
+  Molecular Design 26.8, pp. 897–906. DOI: 10.1007/s10822-012-9584-8.
+Merrill, Mike A. et al. (Jan. 2026). Terminal-Bench: Benchmarking Agents on Hard, Realistic Tasks in Command Line
+   Interfaces. DOI: 10.48550/arXiv.2601.11868.
+
+
+
+
+                                                         16
+

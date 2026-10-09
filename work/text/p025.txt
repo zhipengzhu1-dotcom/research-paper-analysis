@@ -1,0 +1,83 @@
+              T1(450)–T2(50)                                                                                            2.5
+
+
+
+
+                                                                                   Relative BA improvement (kcal/mol)
+                                                                                                                                   T1(450)–Mix(50) T1(400)–Mix(100) T1(250)–Mix(250) T1(250)–T2(250)
+             T1(300)–T2(200)
+             T1(250)–T2(250)
+             T1(450)–Mix(50)                                                                                            2.0
+Trained
+            T1(400)–Mix(100)                                                                                                                                                 T1(350)–Mix(150)
+            T1(350)–Mix(150)
+             T1(400)–T2(100)                                                                                            1.5
+             T1(350)–T2(150)                                                                                                                                                           GPT-5.6 Sol
+
+            T1(300)–Mix(200)
+            T1(250)–Mix(250)                                                                                            1.0    T1(400)–T2(100)    T1(350)–T2(150)   T1(300)–Mix(200)
+                    T1(500)
+             Qwen 3.6 (base)                                                                                                                                         T1(300)–T2(200)
+
+
+
+Zero-shot
+                    GLM-5.2                                                                                             0.5                              T1(450)–T2(50)
+               Claude Opus 5                                                                                                                                                      Claude Opus 4.8
+                     GPT-5.5
+             Claude Opus 4.8                                                                                            0.0        T1(500)
+
+                  GPT-5.6 Sol
+                                −4             −2    0       2        4        6                                              70         72           74            76          78          80
+                                     Relative BA improvement (kcal/mol)                                                                      Training wall time (hours)
+Figure A4. Curriculum-trained models with w obj = 0.25 and w constraint = 0.75. The data presentation here is consistent with
+Figure 3, and higher relative binding affinity improvement is better.
+
+
+
+C.3 Analysis of model submissions
+For our evaluation setting, the model is tasked with returning its final proposed molecule enclosed between the
+<|answer_start|> and <|answer_end|> tags, an instruction that is provided in its task prompt (see Prompts 2
+and 3). However, we observe that in certain cases, the model does not return its best scored molecule, instead
+returning an alternative design that scores worse. We quantify this across all models for the w obj = 0.75, w constraint =
+0.25 condition in Figure A5 and carry out analysis only on rollouts that call score_sqm. By restricting analysis to
+these rollouts, we can assess whether models that get feedback from the scoring tool actually pick the best molecule
+that they scored or instead demonstrate alternate behavior.
+
+
+                    T1(250)–Mix(250)
+
+                      T1(300)–T2(200)
+
+                      T1(400)–T2(100)
+
+                    T1(350)–Mix(150)
+
+                      T1(250)–T2(250)
+
+                       T1(450)–T2(50)
+
+                    T1(400)–Mix(100)                                                                                                          Best (scored)
+                      T1(450)–Mix(50)                                                                                                         Suboptimal (scored)
+                    T1(300)–Mix(200)                                                                                                          Best (unscored)
+                      T1(350)–T2(150)                                                                                                         Suboptimal (unscored)
+                                T1(500)                                                                                                       Failure
+                        Claude Opus 4.8
+                             GPT-5.6 Sol
+                          Claude Opus 5
+                               GLM-5.2
+                                GPT-5.5
+                        Qwen 3.6 (base)
+
+                                           0        20       40        60                  80                                  100
+                                                     Percentage of scored rollouts
+Figure A5. Percentage of scored rollouts for each model broken down into five categories by the final submitted molecule: the
+best (or a worse) molecule the model scored during the rollout (Best/Suboptimal (scored)), a new molecule submitted unscored
+that ends up better (or worse) than its best scored (Best/Suboptimal (unscored)), or no valid submission (Failure). A scored
+molecule is one the model runs SQM scoring on during the rollout; an unscored molecule is submitted without scoring.
+
+
+
+
+                                                                          25
+

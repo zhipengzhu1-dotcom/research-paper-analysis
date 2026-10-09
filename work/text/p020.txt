@@ -1,0 +1,58 @@
+A Task and reward design
+A.1 Dataset curation
+For the Tier-1 tasks, we define tasks based on molecules from ZINC, a large database of commercially available
+compounds (Tingle et al., 2023), and for Tier-2 and the SQM evaluation tasks, we define tasks based on ligand–receptor
+pairs from the PLINDER dataset (Durairaj et al., 2024), a large dataset of experimentally determined protein–ligand
+structures.
+    Our Tier-1 tasks revolve around optimizing a molecular property of a seed molecule subject to a set of 2–4
+randomly generated constraints along with a BRICS scaffold (Degen et al., 2008) constraint. Both the target property
+and constraints are randomly sampled from the full set of 116 RDKit and OpenEye molecular descriptors (see
+Table A4). We randomly sample whether the primary optimization task should be a minimization or maximization
+of the target property. Next, we randomly sample a molecule from ZINC as our seed molecule, construct initial
+constraints based on this seed molecule, and then perturb a random subset of these constraints slightly to ensure
+that the seed molecule violates at least one of the constraints. This procedure ensures that the constraints are
+reasonably satisfiable and the perturbation provides additional complexity to the optimization task. After randomly
+generating tasks, we filter tasks to eliminate impossible tasks, such as those that involve optimizing a property
+beyond a chemically feasible limit (e.g., minimizing the number of hydrogen bond donors when the seed molecule
+has no hydrogen bond donors) or optimizing a non-scalar property. Finally, the model is allowed access to a single
+tool, calculate_multiple_properties, which takes a list of properties and a list of SMILES strings as input and
+returns the computed properties for each SMILES. The list of computable properties is restricted to those in Table A4.
+We provide the model with this single wrapper tool to avoid bloating the model context with a large number of
+similar tools.
+    To curate our Tier-2 tasks, we use a subset of the PLINDER dataset, where we use the following criteria to filter
+out ligand–receptor pairs:
+
+    • The seed ligand has a molecular weight between 200 and 600 Daltons
+    • We filter out ligands that are ions, cofactors, covalent binders, oligomers, and crystallization artifacts
+    • The crystal resolution must be ≤ 3 Å
+    • The Chemgauss4 and SQM scores are computable for the seed ligand
+    • The ligand–receptor pair passes all PoseBusters (Buttenschoen et al., 2024) validity checks, including RDKit
+      sanitization, valid atomic valences, successful kekulization, plausible bond lengths and angles, aromatic-ring
+      planarity, and the absence of internal steric clashes
+    • A valid OpenEye design unit (.oedu) file can be generated
+
+   After curating this subset, we define our Tier-2 tasks as minimizing the Chemgauss4 (McGann, 2011; McGann,
+2012) score subject to a set of physicochemical constraints. Specifically, we define the following constraints:
+
+    • Molecular weight MW < 600 Daltons
+    • 12 to 50 heavy atoms
+    • LogP < 4.0
+    • TPSA < 150.0
+    • 0 to 4 hydrogen bond donors
+    • 0 to 4 aromatic rings
+    • 0 to 9 rotatable bonds
+    • Composed of only the following elements: C, H, N, O, P, S, F, Cl, Br, I
+    • Retains the required BRICS scaffold (Degen et al., 2008) extracted from the starting molecule
+
+The model is also given access to the same calculate_multiple_properties tool as in Tier-1 tasks. In addition,
+it is given access to a score_chemgauss4 tool, which inputs a SMILES string and returns the Chemgauss4 score (Mc-
+Gann, 2011; McGann, 2012). To avoid additional complexity during training, the tool carries out POSIT docking (Kelley
+et al., 2015) before scoring with Chemgauss4. Additionally, we define the tool as a partial function per target, such
+that all additional target-specific files (e.g., the target-specific design unit file) are already encapsulated within the
+tool, simplifying scoring.
+     For the SQM evaluation task, the task construction is largely the same, except that the primary objective is to min-
+imize the SQM score (Pecina et al., 2024) subject to the same physicochemical constraints. We also provide the model
+
+
+                                                           20
+

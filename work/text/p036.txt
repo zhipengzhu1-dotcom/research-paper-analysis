@@ -1,0 +1,64 @@
+     Target property:
+     Your objective is to maximize the primary amine groups.
+
+     Constraints:
+     - 11 aromatic atoms
+     - sulfone groups > 2
+     - Must contain scaffold: COc1ccccc1SCC=O
+
+     WORKFLOW
+     1. Calculate properties of the starting molecule to understand the baseline.
+     2. Identify which constraints are violated and what needs improvement.
+     3. Propose a structural modification that improves the target property while satisfying
+     constraints.
+     4. Evaluate the modified molecule with the tool.
+     5. Iterate -- use the tool results to guide your next proposal.
+     6. In your final message, output the best molecule you found (which may be one you proposed
+      earlier).
+
+
+
+Prompt/Response 3. Tier-2 environment: a rendered user prompt (one task instance). The system prompt is identical to the
+one for the Tier-1 environment above and is omitted. It specifies the 20-turn budget, the cheap property-calculation tool and
+the expensive Chemgauss4 docking scorer (5-call budget, one molecule per call), the seed molecule with atom-map labels, the
+pocket binding context, and the lead optimization constraints.
+
+
+     USER PROMPT
+     Your task is to optimize a seed molecule to bind more tightly to a protein target. A LOWER
+     (more negative) score means tighter predicted binding.
+
+     TURN BUDGET
+     You have 20 turns total. Each turn is either a molecule proposal OR a tool call -- both
+     count toward the limit. Issue AT MOST ONE tool call per message: never batch several
+     molecules or several tool calls into a single message.
+
+     TOOLS
+     - Property-calculation tool: computes cheap molecular descriptors to reason about your
+     candidates. Call it with a molecule and the names of the properties you want, chosen from
+     the AVAILABLE PROPERTIES list below. It is cheap -- use it freely to triage candidates.
+     The scoring tool(s) below are EXPENSIVE and slow (each call runs a heavy physics job). Call
+      them at most 5 times in total, one molecule per call, and only on your most promising
+     candidates (calls beyond 5 are refused):
+     - score_chemgauss4: Dock a molecule into the target pocket (POSIT) and score the pose with
+     Chemgauss4 (more negative = tighter binding).
+
+     OUTPUT FORMAT
+     Each molecule proposal must be its own message containing both tag blocks:
+
+     <|reasoning_summary_start|>
+     [Your reasoning: what you changed and why it should bind more tightly]
+     <|reasoning_summary_end|>
+
+     <|answer_start|>
+     [A single valid SMILES string only, with no extra text -- it is parsed as the proposed
+     molecule]
+     <|answer_end|>
+
+     Do NOT include tool calls in the same message as a molecule proposal.
+
+     AVAILABLE PROPERTIES
+
+
+                                                             36
+

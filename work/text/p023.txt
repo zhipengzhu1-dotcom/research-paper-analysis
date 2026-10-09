@@ -1,0 +1,60 @@
+  All training experiments use 32 B200s (4 nodes) with 2 nodes for training and 2 nodes for inference. We use a batch
+  size of 1024 rollouts for all training experiments, with 64 unique tasks per batch and a group size of 16. All reported
+  models were run for a total of 500 steps with consistent hardware and parallelism settings. During curriculum
+  training, we hot-start the model from the relevant checkpoint and only load the model weights with the optimizer
+  state being reset. We include all relevant hyperparameters in Table A2.
+
+                                         Table A2. Training hyperparameters used across all runs.
+
+                          Hyperparameter                                                                       Value
+                          Policy optimization loss                         IPO (ipo_loss_fn) (Prime Intellect, 2025)
+                          Group size (completions/prompt)                                                          16
+                          KL coefficient (β)                                                                1×10−3
+                          Off-policy staleness (max_off_policy_steps)                                      2 (async)
+                          Optimizer                                                                         AdamW
+                          Learning rate                                                                     1×10−6
+                          Adam (β1 , β2 )                                                               (0.9, 0.999)
+                          Weight decay                                                                           0.01
+                          Gradient clip (max_norm)                                                                0.1
+                          LR schedule                                               constant (no warmup, no decay)
+                          Batch size (rollouts / step)                                                          1024
+                          Max sequence length                                                         16 384 tokens
+                          Max completion tokens                                                               14 000
+                          Sampling temperature                                                                    1.0
+
+
+
+
+  C Additional results
+  C.1 Tier-2 only training
+
+                 w = 0.75, wconstraint = 0.25 wobj = 0.50, wconstraint = 0.50
+              1.00 obj
+              0.75
+
+
+
+Mean reward
+              0.50                                                                                                      Rtotal
+              0.25                                                                                                      robj
+                                                                                                                        rconstraint
+              0.00
+              0.25
+                     0   100    200     300     400     500       0         100     200     300     400     500
+                                                Training step
+  Figure A1. T2(500) training, one panel per reward weighting. Each panel shows the total reward (R total ) together with the
+  unweighted binding and constraint subrewards (r obj and r constraint ). The total is the weighted combination of these subrewards
+  plus the tool/format penalties, so the r obj and r constraint curves do not sum directly to R total . In both settings the binding
+  subreward stays near zero while the constraint subreward saturates, i.e., training collapses to a constraint-only policy. Rewards
+  are smoothed with an exponential moving average (α = 0.15).
+
+      We also investigated training exclusively on Tier-2 tasks for 500 steps with the same hyperparameters as other
+  training runs except where noted, and tested two reward weighting variations. We found that this led to a collapse
+  in model behavior, where the model proposed designs in a single turn and did not iterate upon its designs with tool
+  calls. We plot the reward curves for these experiments in Figure A1. We see that the total reward quickly plateaus,
+  and when we examine r obj and r constraint , we see that the models learn to saturate the constraint satisfaction rewards,
+  without making any progress on improving the binding affinity of the seed molecule. This illustrates that the Tier-2
+
+
+                                                                      23
+
